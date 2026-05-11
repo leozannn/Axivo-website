@@ -1,8 +1,57 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
+
+function Typewriter() {
+  const { lang } = useLang()
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [displayed, setDisplayed] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    setDisplayed('')
+    setIsDeleting(false)
+    setPhraseIndex(0)
+  }, [lang])
+
+  useEffect(() => {
+    const phrases =
+      lang === 'it'
+        ? ["Dal piano industriale al capitale.", "Dalla strategia all'esecuzione.", "Dalla visione ai risultati."]
+        : ["From industrial plan to capital.", "From strategy to execution.", "From vision to results."]
+    const phrase = phrases[phraseIndex]
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        const next = phrase.slice(0, displayed.length + 1)
+        setDisplayed(next)
+        if (next.length === phrase.length) {
+          setTimeout(() => setIsDeleting(true), 2000)
+        }
+      } else {
+        const next = phrase.slice(0, displayed.length - 1)
+        setDisplayed(next)
+        if (next.length === 0) {
+          setIsDeleting(false)
+          setPhraseIndex(i => (i + 1) % phrases.length)
+        }
+      }
+    }, isDeleting ? 40 : 80)
+    return () => clearTimeout(timeout)
+  }, [displayed, isDeleting, phraseIndex, lang])
+
+  return (
+    <p className="text-lg md:text-xl mb-6" style={{ color: '#00C8FF', fontFamily: 'Space Grotesk, sans-serif', minHeight: '1.75rem' }}>
+      {displayed}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.7, repeat: Infinity, repeatType: 'reverse' }}
+        style={{ display: 'inline-block', width: '2px', height: '1.2em', background: '#00C8FF', verticalAlign: 'text-bottom', marginLeft: '2px' }}
+      />
+    </p>
+  )
+}
 
 export default function Hero() {
   const { lang } = useLang()
@@ -85,7 +134,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex flex-col justify-start overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-start md:justify-center overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)' }}
     >
       {/* Parallax background */}
@@ -98,15 +147,16 @@ export default function Hero() {
       </motion.div>
 
       {/* Parallax content */}
-      <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-20">
+      <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-10 md:py-8">
         {/* Headline — word-by-word stagger */}
         <h1
-          className="text-5xl md:text-7xl font-bold leading-tight mb-6"
+          className="text-4xl md:text-7xl font-bold leading-tight mb-6"
           style={{ fontFamily: 'Space Grotesk, sans-serif', maxWidth: '860px' }}
         >
           {words.map((word, i) => {
             if (word === '\n') return <br key={i} />
-            const isLast = i === words.filter(w => w !== '\n').length - 1
+            const lastWordIdx = words.reduce((acc, w, idx) => (w !== '\n' ? idx : acc), -1)
+            const isLast = i === lastWordIdx
             const text = isLast ? word.replace(/\.$/, '') : word
             return (
               <motion.span
@@ -126,6 +176,9 @@ export default function Hero() {
             )
           })}
         </h1>
+
+        {/* Typewriter */}
+        <Typewriter />
 
         {/* Separator */}
         <motion.div
@@ -152,14 +205,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4"
         >
-          <a href="#servizi" className="btn-glow px-7 py-3 rounded-lg text-base font-semibold">
+          <a href="#servizi" className="btn-glow px-7 py-3 rounded-lg text-base font-semibold text-center sm:text-left">
             {t(translations.hero.cta1, lang)}
           </a>
           <a
             href="#contatti"
-            className="px-7 py-3 rounded-lg text-base font-semibold transition-all"
+            className="px-7 py-3 rounded-lg text-base font-semibold transition-all text-center sm:text-left"
             style={{ border: '1px solid rgba(0,200,255,0.4)', color: '#00C8FF' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,200,255,0.08)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(0,200,255,0.2)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.boxShadow = 'none' }}
@@ -174,15 +227,22 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <span className="text-xs" style={{ color: '#94A3B8', letterSpacing: '0.1em' }}>SCROLL</span>
         <motion.div
+          className="flex flex-col items-center gap-2"
           animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-px h-8"
-          style={{ background: 'linear-gradient(180deg, #00C8FF, transparent)' }}
-        />
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <span className="text-xs tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>Scroll</span>
+          <div className="w-px h-12" style={{ background: 'linear-gradient(180deg, rgba(0,200,255,0.8), transparent)' }} />
+          <motion.div
+            className="rounded-full"
+            style={{ width: '6px', height: '6px', background: '#00C8FF' }}
+            animate={{ y: [0, 16, 0], opacity: [1, 0, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </motion.div>
       </motion.div>
     </section>
   )

@@ -69,6 +69,8 @@ export const translations = {
     s5text: { it: 'Scouting, candidatura, budgeting e rendicontazione per programmi nazionali e UE.', en: 'Scouting, application, budgeting and reporting for national and EU programmes.' },
     s6title: { it: 'Coordinamento specialistico', en: 'Specialist coordination' },
     s6text: { it: "Interfaccia con professionisti della società per aspetti amministrativi, fiscali e di bilancio, se richiesto.", en: "Interface with the company's professionals on administrative, tax and accounting matters, where required." },
+    s7title: { it: 'Contabilità, fisco e bilancio', en: 'Accounting, tax & reporting' },
+    s7text: { it: 'Assistenza e consulenza sugli adempimenti contabili, fiscali e amministrativi. Supporto nella redazione del bilancio di esercizio, bilanci infrannuali e relazioni tecniche e illustrative a supporto.', en: 'Assistance and advisory on the fulfilment of accounting, tax and administrative obligations. Support in preparing annual financial statements, interim financial statements and supporting technical reports.' },
     outputLabel: { it: 'Output atteso', en: 'Expected output' },
     outputText: { it: "Un percorso di advisory con fasi, milestone, deliverable e reporting periodico, calibrato sulle esigenze della società e formalizzato nella lettera d'incarico.", en: "An advisory path with phases, milestones, deliverables and periodic reporting, tailored to the company's needs and formalized in the engagement letter." },
   },

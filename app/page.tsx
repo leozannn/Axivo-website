@@ -1,6 +1,7 @@
 'use client'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import Stats from '@/components/Stats'
 import About from '@/components/About'
 import Target from '@/components/Target'
 import Services from '@/components/Services'
@@ -15,6 +16,7 @@ export default function Home() {
     <main style={{ position: 'relative' }}>
       <Navbar />
       <Hero />
+      <Stats />
       <About />
       <Target />
       <Services />

@@ -4,6 +4,8 @@ import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
 
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
 export default function Why() {
   const { lang } = useLang()
   const tr = translations.cta
@@ -25,7 +27,7 @@ export default function Why() {
   return (
     <motion.section
       id="perche-axivo"
-      className="py-24 px-6"
+      className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 100%)' }}
       initial="hidden"
       whileInView="visible"
@@ -46,20 +48,27 @@ export default function Why() {
             {t(tr.sub, lang)}
           </motion.p>
 
-          {/* 3 concepts */}
+          {/* 3 concepts — alternate L/R */}
           <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {concepts.map((c) => (
-              <motion.div
-                key={c.title}
-                variants={fadeUp}
-                whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0, 200, 255, 0.18)' }}
-                transition={{ duration: 0.25 }}
-                className="glass-card rounded-xl p-6 cursor-pointer"
-              >
-                <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#00C8FF' }}>{c.title}</h3>
-                <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{c.sub}</p>
-              </motion.div>
-            ))}
+            {concepts.map((c, i) => {
+              const fromLeft = i % 2 === 0
+              return (
+                <motion.div
+                  key={c.title}
+                  initial={{ opacity: 0, x: fromLeft ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.7, delay: i * 0.12, ease: EASE }}
+                  whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0, 200, 255, 0.18)' }}
+                  className="glass-card rounded-xl p-6 cursor-pointer"
+                >
+                  <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#00C8FF' }}>
+                    {c.title}
+                  </h3>
+                  <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{c.sub}</p>
+                </motion.div>
+              )
+            })}
           </div>
 
           {/* Next steps */}
@@ -73,7 +82,7 @@ export default function Why() {
                 key={step.num}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                transition={{ duration: 0.5, delay: i * 0.15, ease: EASE }}
                 viewport={{ once: true }}
                 className="flex gap-4 items-start flex-1"
               >
@@ -89,7 +98,7 @@ export default function Why() {
           </div>
 
           <motion.div variants={fadeUp} className="text-center">
-            <a href="#contatti" className="btn-glow px-10 py-4 rounded-lg text-base font-semibold inline-block">
+            <a href="#contatti" className="btn-glow shimmer-btn px-10 py-4 rounded-lg text-base font-semibold inline-block">
               {lang === 'it' ? 'Inizia ora' : 'Get started'}
             </a>
           </motion.div>

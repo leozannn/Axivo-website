@@ -4,6 +4,8 @@ import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
 
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
 export default function EquitySteps() {
   const { lang } = useLang()
   const tr = translations.wfe
@@ -11,7 +13,7 @@ export default function EquitySteps() {
   return (
     <motion.section
       id="equity-steps"
-      className="py-24 px-6"
+      className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#F8F9FA' }}
       initial="hidden"
       whileInView="visible"
@@ -37,29 +39,53 @@ export default function EquitySteps() {
           </motion.p>
 
           {/* Vertical timeline */}
-          <div className="max-w-2xl mb-10">
+          <div className="w-full md:max-w-2xl mb-10">
             {tr.wfeSteps.map((step, i) => (
               <motion.div
                 key={step.num}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.25, ease: EASE }}
                 className="flex gap-6"
               >
                 <div className="flex flex-col items-center">
-                  <div
+                  {/* Numbered circle — fills with glow */}
+                  <motion.div
                     className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-                    style={{ border: '2px solid #00C8FF', color: '#00C8FF', fontFamily: 'Space Grotesk, sans-serif', background: '#F8F9FA' }}
+                    style={{
+                      border: '2px solid #00C8FF',
+                      color: '#00C8FF',
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      background: '#F8F9FA',
+                    }}
+                    initial={{ boxShadow: '0 0 0 0px rgba(0,200,255,0)' }}
+                    whileInView={{ boxShadow: '0 0 0 4px rgba(0,200,255,0.18), 0 0 16px rgba(0,200,255,0.2)' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.25 + 0.15 }}
                   >
                     {step.num}
-                  </div>
+                  </motion.div>
+
+                  {/* Connector line — draws downward */}
                   {i < tr.wfeSteps.length - 1 && (
-                    <div className="w-px flex-1 my-2" style={{ background: 'linear-gradient(180deg, #00C8FF, rgba(0,200,255,0.1))' }} />
+                    <motion.div
+                      className="w-px flex-1 my-2"
+                      style={{
+                        background: 'linear-gradient(180deg, #00C8FF, rgba(0,200,255,0.15))',
+                        transformOrigin: 'top',
+                      }}
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.25 + 0.3, ease: EASE }}
+                    />
                   )}
                 </div>
                 <div className="pb-8">
-                  <h3 className="font-semibold text-base mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1A1A2E' }}>{t(step.title, lang)}</h3>
+                  <h3 className="font-semibold text-base mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1A1A2E' }}>
+                    {t(step.title, lang)}
+                  </h3>
                   <p className="text-sm" style={{ color: '#64748B', lineHeight: 1.6 }}>{t(step.text, lang)}</p>
                 </div>
               </motion.div>

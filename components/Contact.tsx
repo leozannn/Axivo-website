@@ -6,6 +6,8 @@ import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
 
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
 export default function Contact() {
   const { lang } = useLang()
   const tr = translations.contact
@@ -18,10 +20,16 @@ export default function Contact() {
     setSubmitted(true)
   }
 
+  const fields = [
+    { field: 'name' as const, label: t(tr.name, lang), inputType: 'text' },
+    { field: 'email' as const, label: t(tr.email, lang), inputType: 'email' },
+    { field: 'company' as const, label: t(tr.company, lang), inputType: 'text' },
+  ]
+
   return (
     <motion.section
       id="contatti"
-      className="py-24 px-6"
+      className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0D1220' }}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -45,53 +53,82 @@ export default function Contact() {
           </motion.p>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Form */}
-            <motion.div variants={fadeUp}>
+            {/* Form — stagger fields */}
+            <div>
               {submitted ? (
-                <div className="rounded-xl p-8 text-center" style={{ background: 'rgba(0,200,255,0.08)', border: '1px solid rgba(0,200,255,0.3)' }}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-xl p-8 text-center"
+                  style={{ background: 'rgba(0,200,255,0.08)', border: '1px solid rgba(0,200,255,0.3)' }}
+                >
                   <div className="text-3xl mb-4">✓</div>
                   <p className="text-base font-medium" style={{ color: '#00C8FF' }}>{t(tr.sent, lang)}</p>
-                </div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  {([
-                    { field: 'name' as const, label: t(tr.name, lang), inputType: 'text' },
-                    { field: 'email' as const, label: t(tr.email, lang), inputType: 'email' },
-                    { field: 'company' as const, label: t(tr.company, lang), inputType: 'text' },
-                  ]).map(({ field, label, inputType }) => (
-                    <input
+                  {fields.map(({ field, label, inputType }, i) => (
+                    <motion.div
                       key={field}
-                      type={inputType}
+                      initial={{ opacity: 0, y: 18 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+                    >
+                      <input
+                        type={inputType}
+                        required
+                        placeholder={label}
+                        value={form[field]}
+                        onChange={e => setForm(p => ({ ...p, [field]: e.target.value }))}
+                        className="w-full rounded-lg px-4 py-3 text-sm outline-none transition-all min-h-[48px]"
+                        style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}
+                        onFocus={e => (e.target.style.borderColor = '#00C8FF')}
+                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                      />
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
+                  >
+                    <textarea
                       required
-                      placeholder={label}
-                      value={form[field]}
-                      onChange={e => setForm(p => ({ ...p, [field]: e.target.value }))}
-                      className="w-full rounded-lg px-4 py-3 text-sm outline-none transition-all"
+                      rows={5}
+                      placeholder={t(tr.message, lang)}
+                      value={form.message}
+                      onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
+                      className="w-full rounded-lg px-4 py-3 text-sm outline-none resize-none transition-all"
                       style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}
                       onFocus={e => (e.target.style.borderColor = '#00C8FF')}
                       onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
                     />
-                  ))}
-                  <textarea
-                    required
-                    rows={5}
-                    placeholder={t(tr.message, lang)}
-                    value={form.message}
-                    onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                    className="w-full rounded-lg px-4 py-3 text-sm outline-none resize-none transition-all"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}
-                    onFocus={e => (e.target.style.borderColor = '#00C8FF')}
-                    onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
-                  />
-                  <button type="submit" className="btn-glow py-3 rounded-lg text-sm font-semibold w-full mt-2">
-                    {t(tr.send, lang)}
-                  </button>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4, ease: EASE }}
+                  >
+                    <button type="submit" className="btn-glow shimmer-btn py-3 rounded-lg text-sm font-semibold w-full mt-2">
+                      {t(tr.send, lang)}
+                    </button>
+                  </motion.div>
                 </form>
               )}
-            </motion.div>
+            </div>
 
-            {/* Contact info */}
-            <motion.div variants={fadeUp} className="flex flex-col gap-5">
+            {/* Contact info — from right */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
+              className="flex flex-col gap-5"
+            >
               <div className="flex gap-4 items-start">
                 <MapPin size={18} style={{ color: '#00C8FF', marginTop: 2, flexShrink: 0 }} />
                 <div>
@@ -126,7 +163,6 @@ export default function Contact() {
                 </a>
               </div>
 
-              {/* Social placeholders */}
               <div className="flex gap-4 mt-2">
                 {[ExternalLink, X].map((Icon, i) => (
                   <a
@@ -146,21 +182,16 @@ export default function Contact() {
 
           {/* Footer */}
           <div className="separator-cyan mt-16 mb-8" />
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            {/* Logo */}
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-center gap-6">
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
               style={{ height: '72px', width: 'auto', objectFit: 'contain' }}
             />
-
-            {/* Disclaimer */}
             <p className="text-xs max-w-lg" style={{ color: '#475569', lineHeight: 1.6 }}>
               {t(ftr.disclaimer, lang)}
             </p>
-
-            {/* Copyright */}
-            <p className="text-xs whitespace-nowrap" style={{ color: '#475569' }}>
+            <p className="text-xs" style={{ color: '#475569' }}>
               {t(ftr.copyright, lang)}
             </p>
           </div>
