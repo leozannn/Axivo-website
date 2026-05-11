@@ -30,7 +30,7 @@ export default function Navbar() {
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
-              className="h-14 md:h-[140px] w-auto"
+              className="h-[80px] md:h-[120px] w-auto"
             />
           </a>
 
@@ -96,7 +96,7 @@ export default function Navbar() {
             {/* Top bar with logo + close */}
             <div className="flex items-center justify-between px-4 py-4">
               <a href="#" onClick={close}>
-                <img src="/axivo-logo.png" className="h-14 w-auto" alt="AXIVO Partners" />
+                <img src="/axivo-logo.png" className="h-[80px] w-auto" alt="AXIVO Partners" />
               </a>
               <button
                 className="w-11 h-11 flex items-center justify-center rounded-lg"

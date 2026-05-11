@@ -72,8 +72,8 @@ export default function Hero() {
     let h = (canvas.height = canvas.offsetHeight)
 
     const particles: { x: number; y: number; vx: number; vy: number }[] = []
-    const NUM = 80
-    const MAX_DIST = 150
+    const NUM = window.innerWidth < 768 ? 30 : 80
+    const MAX_DIST = window.innerWidth < 768 ? 100 : 150
 
     for (let i = 0; i < NUM; i++) {
       particles.push({
