@@ -30,7 +30,7 @@ export default function Navbar() {
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
-              className="h-20 md:h-40 w-auto object-contain"
+              className="h-24 md:h-44 w-auto object-contain"
             />
           </a>
 
