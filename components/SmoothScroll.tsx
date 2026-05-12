@@ -3,6 +3,10 @@ import { useEffect } from 'react'
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+
     const isMobile =
       /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768
     if (isMobile) return
