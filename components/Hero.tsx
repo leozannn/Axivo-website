@@ -138,16 +138,16 @@ export default function Hero() {
       style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)' }}
     >
       {/* Parallax background */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
+      <motion.div style={{ y: bgY, pointerEvents: 'none' }} className="absolute inset-0 z-0">
         <canvas
           ref={canvasRef}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
         />
         <div className="dot-grid absolute top-0 right-0 opacity-40" style={{ width: '320px', height: '320px' }} />
       </motion.div>
 
       {/* Parallax content */}
-      <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-10 md:py-8">
+      <motion.div style={{ y: contentY, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-10 md:py-8">
         {/* Headline — word-by-word stagger */}
         <h1
           className="text-4xl md:text-7xl font-bold leading-tight mb-6"
