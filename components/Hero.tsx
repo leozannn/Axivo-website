@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 function Typewriter() {
   const { lang } = useLang()
@@ -55,12 +56,14 @@ function Typewriter() {
 
 export default function Hero() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
 
   const { scrollY } = useScroll()
-  const bgY = useTransform(scrollY, [0, 600], [0, 180])
-  const contentY = useTransform(scrollY, [0, 600], [0, -60])
+  // Disable parallax on mobile — scroll listeners interfere with native touch scroll
+  const bgY = useTransform(scrollY, [0, 600], isMobile ? [0, 0] : [0, 180])
+  const contentY = useTransform(scrollY, [0, 600], isMobile ? [0, 0] : [0, -60])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -147,7 +150,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Parallax content */}
-      <motion.div style={{ y: contentY, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-10 md:py-8">
+      <motion.div style={{ y: contentY, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-[82px] pb-10 md:py-8">
         {/* Headline — word-by-word stagger */}
         <h1
           className="text-4xl md:text-7xl font-bold leading-tight mb-6"

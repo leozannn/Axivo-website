@@ -22,15 +22,25 @@ export default function Navbar() {
   return (
     <>
       <nav
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 50, background: 'transparent' }}
+        style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0,
+          zIndex: 50,
+          background: 'rgba(10,14,26,0.92)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6 flex items-center justify-between">
-          {/* Logo — smaller on mobile */}
+        <div
+          className="max-w-7xl mx-auto px-4 md:px-6 md:py-6 flex items-center justify-between"
+          style={{ minHeight: '70px' }}
+        >
+          {/* Logo */}
           <a href="#" className="flex items-center" onClick={close}>
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
-              className="h-48 md:h-44 w-auto object-contain"
+              className="h-10 md:h-44 w-auto object-contain"
             />
           </a>
 

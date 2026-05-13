@@ -9,7 +9,14 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     const isMobile =
       /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768
-    if (isMobile) return
+
+    if (isMobile) {
+      document.body.style.overflow = 'auto'
+      document.body.style.height = 'auto'
+      document.documentElement.style.overflow = 'auto'
+      document.documentElement.style.height = 'auto'
+      return
+    }
 
     let lenis: any
     const initLenis = async () => {
