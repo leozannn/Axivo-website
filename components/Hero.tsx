@@ -143,7 +143,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-[82px] pb-10 md:py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24 pb-10 md:pt-32 md:pb-8">
         {/* Headline — word-by-word stagger */}
         <h1
           className="text-4xl md:text-7xl font-bold leading-tight mb-6"

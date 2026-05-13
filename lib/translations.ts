@@ -4,7 +4,6 @@ export const translations = {
   nav: {
     about: { it: 'Chi siamo', en: 'About us' },
     services: { it: 'Servizi', en: 'Services' },
-    method: { it: 'Metodo', en: 'Method' },
     wfe: { it: 'Work for Equity', en: 'Work for Equity' },
     contact: { it: 'Contatti', en: 'Contact' },
     cta: { it: 'Contattaci', en: 'Contact us' },
@@ -73,20 +72,6 @@ export const translations = {
     s7text: { it: 'Assistenza e consulenza sugli adempimenti contabili, fiscali e amministrativi. Supporto nella redazione del bilancio di esercizio, bilanci infrannuali e relazioni tecniche e illustrative a supporto.', en: 'Assistance and advisory on the fulfilment of accounting, tax and administrative obligations. Support in preparing annual financial statements, interim financial statements and supporting technical reports.' },
     outputLabel: { it: 'Output atteso', en: 'Expected output' },
     outputText: { it: "Un percorso di advisory con fasi, milestone, deliverable e reporting periodico, calibrato sulle esigenze della società e formalizzato nella lettera d'incarico.", en: "An advisory path with phases, milestones, deliverables and periodic reporting, tailored to the company's needs and formalized in the engagement letter." },
-  },
-  method: {
-    tag: { it: 'OPERATING MODEL', en: 'OPERATING MODEL' },
-    title: { it: 'Metodo AXIVO', en: 'AXIVO Method' },
-    subtitle: { it: 'Un framework operativo per trasformare esigenze di crescita in priorità, milestone e deliverable verificabili.', en: 'An operating framework to turn growth needs into priorities, milestones and verifiable deliverables.' },
-    steps: [
-      { num: '01', title: { it: 'Discovery', en: 'Discovery' }, text: { it: 'Assessment, fabbisogni, baseline KPI', en: 'Assessment, needs, baseline KPIs' } },
-      { num: '02', title: { it: 'Roadmap', en: 'Roadmap' }, text: { it: 'Priorità, piano industriale, milestone', en: 'Priorities, industrial plan, milestones' } },
-      { num: '03', title: { it: 'Execution', en: 'Execution' }, text: { it: 'Deliverable, coordinamento, go-to-market', en: 'Deliverables, coordination, go-to-market' } },
-      { num: '04', title: { it: 'Capital', en: 'Capital' }, text: { it: 'Fundraising, bandi, partner industriali', en: 'Fundraising, grants, industrial partners' } },
-      { num: '05', title: { it: 'Reporting', en: 'Reporting' }, text: { it: 'KPI, governance, rendicontazione', en: 'KPIs, governance, reporting' } },
-    ],
-    govLabel: { it: 'Governance del progetto', en: 'Project governance' },
-    govText: { it: 'Le attività sono organizzate per fasi e milestone, con deliverable condivisi e rendicontazione periodica. L\'obiettivo è mantenere una traiettoria chiara tra strategia, azione e risultato.', en: 'Activities are organized by phases and milestones, with shared deliverables and periodic reporting. The goal is to maintain a clear trajectory between strategy, action and results.' },
   },
   wfe: {
     tag: { it: 'REMUNERAZIONE MISTA', en: 'BLENDED REMUNERATION' },

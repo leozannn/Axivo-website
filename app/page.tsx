@@ -6,7 +6,6 @@ import Stats from '@/components/Stats'
 import About from '@/components/About'
 import Target from '@/components/Target'
 import Services from '@/components/Services'
-import Method from '@/components/Method'
 import Equity from '@/components/Equity'
 import EquitySteps from '@/components/EquitySteps'
 import Why from '@/components/Why'
@@ -30,7 +29,6 @@ export default function Home() {
       <About />
       <Target />
       <Services />
-      <Method />
       <Equity />
       <EquitySteps />
       <Why />

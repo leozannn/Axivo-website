@@ -6,7 +6,7 @@ import { useLang } from '@/lib/LanguageContext'
 const statsData = [
   { value: 6, suffix: '+', label: { it: 'Aree di servizio', en: 'Service areas' } },
   { value: 4, suffix: '', label: { it: 'Tipologie di clienti', en: 'Client profiles' } },
-  { value: 5, suffix: '', label: { it: 'Fasi del metodo AXIVO', en: 'AXIVO method phases' } },
+  { value: 5, suffix: '', label: { it: 'Fasi operative', en: 'Operating phases' } },
   { value: 3, suffix: '', label: { it: 'Trigger di liquidità', en: 'Liquidity triggers' } },
 ]
 
@@ -80,7 +80,7 @@ export default function Stats() {
       ref={ref}
       className="py-20 px-6"
       style={{
-        background: 'linear-gradient(180deg, #0A0E1A 0%, #0D1525 100%)',
+        background: '#0F1628',
         borderTop: '1px solid rgba(0,200,255,0.08)',
         borderBottom: '1px solid rgba(0,200,255,0.08)',
       }}

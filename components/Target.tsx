@@ -25,7 +25,7 @@ export default function Target() {
     <motion.section
       id="target"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: '#0D1220' }}
+      style={{ background: '#0F1628' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}

@@ -28,7 +28,7 @@ export default function Why() {
     <motion.section
       id="perche-axivo"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 100%)' }}
+      style={{ background: '#0F1628' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}

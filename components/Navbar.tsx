@@ -12,7 +12,6 @@ export default function Navbar() {
   const links = [
     { label: t(translations.nav.about, lang), href: '#chi-siamo' },
     { label: t(translations.nav.services, lang), href: '#servizi' },
-    { label: t(translations.nav.method, lang), href: '#metodo' },
     { label: t(translations.nav.wfe, lang), href: '#equity' },
     { label: t(translations.nav.contact, lang), href: '#contatti' },
   ]
@@ -22,25 +21,15 @@ export default function Navbar() {
   return (
     <>
       <nav
-        style={{
-          position: 'fixed',
-          top: 0, left: 0, right: 0,
-          zIndex: 50,
-          background: 'rgba(10,14,26,0.92)',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
-        }}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 50, background: 'transparent' }}
       >
-        <div
-          className="max-w-7xl mx-auto px-4 md:px-6 md:py-6 flex items-center justify-between"
-          style={{ minHeight: '70px' }}
-        >
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center" onClick={close}>
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
-              className="h-10 md:h-44 w-auto object-contain"
+              className="h-12 md:h-40 w-auto object-contain"
             />
           </a>
 

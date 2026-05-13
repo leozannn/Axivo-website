@@ -14,7 +14,7 @@ export default function EquitySteps() {
     <motion.section
       id="equity-steps"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: '#F8F9FA' }}
+      style={{ background: '#0A0E1A' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
@@ -28,13 +28,13 @@ export default function EquitySteps() {
             </span>
           </motion.div>
 
-          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1A1A2E' }}>
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFFFF' }}>
             {t(tr.stepsTitle, lang)}
           </motion.h2>
 
           <motion.div variants={fadeUp} className="separator-cyan mb-6" style={{ maxWidth: '200px' }} />
 
-          <motion.p variants={fadeUp} className="text-base mb-12 max-w-xl" style={{ color: '#64748B', lineHeight: 1.7 }}>
+          <motion.p variants={fadeUp} className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
             {t(tr.stepsSub, lang)}
           </motion.p>
 
@@ -57,7 +57,7 @@ export default function EquitySteps() {
                       border: '2px solid #00C8FF',
                       color: '#00C8FF',
                       fontFamily: 'Space Grotesk, sans-serif',
-                      background: '#F8F9FA',
+                      background: 'transparent',
                     }}
                     initial={{ boxShadow: '0 0 0 0px rgba(0,200,255,0)' }}
                     whileInView={{ boxShadow: '0 0 0 4px rgba(0,200,255,0.18), 0 0 16px rgba(0,200,255,0.2)' }}
@@ -83,21 +83,21 @@ export default function EquitySteps() {
                   )}
                 </div>
                 <div className="pb-8">
-                  <h3 className="font-semibold text-base mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1A1A2E' }}>
+                  <h3 className="font-semibold text-base mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFFFF' }}>
                     {t(step.title, lang)}
                   </h3>
-                  <p className="text-sm" style={{ color: '#64748B', lineHeight: 1.6 }}>{t(step.text, lang)}</p>
+                  <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{t(step.text, lang)}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
           {/* Contract perimeter */}
-          <motion.div variants={fadeUp} className="rounded-xl p-6" style={{ background: '#fff', border: '1px solid #E2E8F0' }}>
+          <motion.div variants={fadeUp} className="rounded-xl p-6" style={{ background: 'rgba(0,200,255,0.06)', border: '1px solid rgba(0,200,255,0.25)' }}>
             <div className="text-xs font-semibold mb-2" style={{ color: '#00C8FF', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               {t(tr.contractLabel, lang)}
             </div>
-            <p className="text-sm" style={{ color: '#64748B', lineHeight: 1.7 }}>{t(tr.contractText, lang)}</p>
+            <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.7 }}>{t(tr.contractText, lang)}</p>
           </motion.div>
         </motion.div>
       </div>

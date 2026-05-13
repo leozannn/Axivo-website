@@ -23,7 +23,7 @@ export default function Equity() {
     <motion.section
       id="equity"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: '#0A0E1A' }}
+      style={{ background: '#0F1628' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}

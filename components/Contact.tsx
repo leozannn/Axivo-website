@@ -30,7 +30,7 @@ export default function Contact() {
     <motion.section
       id="contatti"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: '#0D1220' }}
+      style={{ background: '#0A0E1A' }}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: 'easeOut' }}
