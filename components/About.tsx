@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
 
@@ -62,6 +63,7 @@ function AnimatedBorderBox({
 
 export default function About() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const tr = translations.about
 
   const props = [
@@ -154,8 +156,8 @@ export default function About() {
             <motion.div
               className="rounded-xl p-6"
               style={{ background: 'rgba(0,200,255,0.06)', border: '1px solid rgba(0,200,255,0.25)' }}
-              animate={{ scale: [1, 1.015, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              animate={isMobile ? {} : { scale: [1, 1.015, 1] }}
+              transition={{ duration: 3, repeat: isMobile ? 0 : Infinity, ease: 'easeInOut' }}
             >
               <div
                 className="text-xs font-semibold mb-2"

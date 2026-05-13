@@ -1,9 +1,8 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
-import { useIsMobile } from '@/lib/useIsMobile'
 
 function Typewriter() {
   const { lang } = useLang()
@@ -56,14 +55,8 @@ function Typewriter() {
 
 export default function Hero() {
   const { lang } = useLang()
-  const isMobile = useIsMobile()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
-
-  const { scrollY } = useScroll()
-  // Disable parallax on mobile — scroll listeners interfere with native touch scroll
-  const bgY = useTransform(scrollY, [0, 600], isMobile ? [0, 0] : [0, 180])
-  const contentY = useTransform(scrollY, [0, 600], isMobile ? [0, 0] : [0, -60])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -137,20 +130,20 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex flex-col justify-start md:justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)' }}
+      className="relative min-h-screen flex flex-col justify-start md:justify-center"
+      style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)', overflowX: 'hidden' }}
     >
-      {/* Parallax background */}
-      <motion.div style={{ y: bgY, pointerEvents: 'none' }} className="absolute inset-0 z-0">
+      {/* Background — static, no parallax scroll listeners */}
+      <div className="absolute inset-0 z-0" style={{ pointerEvents: 'none' }}>
         <canvas
           ref={canvasRef}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
         />
         <div className="dot-grid absolute top-0 right-0 opacity-40" style={{ width: '320px', height: '320px' }} />
-      </motion.div>
+      </div>
 
-      {/* Parallax content */}
-      <motion.div style={{ y: contentY, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-[82px] pb-10 md:py-8">
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-[82px] pb-10 md:py-8">
         {/* Headline — word-by-word stagger */}
         <h1
           className="text-4xl md:text-7xl font-bold leading-tight mb-6"
@@ -223,7 +216,7 @@ export default function Hero() {
             {t(translations.hero.cta2, lang)}
           </a>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div

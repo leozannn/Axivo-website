@@ -4,11 +4,13 @@ import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
 
 export default function Equity() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const tr = translations.wfe
 
   const benefits = [
@@ -69,8 +71,8 @@ export default function Equity() {
                 <motion.div
                   className="flex sm:flex-col items-center justify-center text-2xl font-bold py-2 sm:py-0 sm:mt-6 shrink-0"
                   style={{ color: '#00C8FF' }}
-                  animate={{ scale: [1, 1.2, 1], rotate: [0, 8, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                  animate={isMobile ? {} : { scale: [1, 1.2, 1], rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 3, repeat: isMobile ? 0 : Infinity, ease: 'easeInOut' }}
                 >
                   +
                 </motion.div>
