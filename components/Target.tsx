@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
 
 export default function Target() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const tr = translations.target
 
   const cards = [
@@ -26,13 +28,13 @@ export default function Target() {
       id="target"
       className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0F1628' }}
-      initial="hidden"
-      whileInView="visible"
+      initial={isMobile ? "visible" : "hidden"}
+      whileInView={isMobile ? undefined : "visible"}
       viewport={{ once: true, margin: '-80px' }}
       variants={fadeIn}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
           <motion.div variants={fadeUp} className="mb-3">
             <span className="ordinal">{t(tr.tag, lang)}</span>
           </motion.div>
@@ -54,8 +56,8 @@ export default function Target() {
               return (
                 <motion.div
                   key={card.num}
-                  initial={{ opacity: 0, x: fromLeft ? -60 : 60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={isMobile ? false : { opacity: 0, x: fromLeft ? -60 : 60 }}
+                  whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.7, delay: i * 0.1, ease: EASE }}
                   whileHover={{
@@ -75,7 +77,6 @@ export default function Target() {
                     <h3 className="font-semibold text-base mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{card.title}</h3>
                     <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{card.text}</p>
                   </div>
-                  {/* Arrow indicator on hover */}
                   <motion.span
                     className="absolute bottom-4 right-5 text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                     style={{ color: '#00C8FF' }}
@@ -87,14 +88,14 @@ export default function Target() {
             })}
           </div>
 
-          {/* Tags — stagger one by one */}
+          {/* Tags */}
           <div className="flex flex-wrap gap-3 mb-10">
             {tags.map((tag, i) => (
               <motion.span
                 key={tag}
                 className="badge-cyan"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={isMobile ? false : { opacity: 0, y: 12 }}
+                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08, ease: EASE }}
               >

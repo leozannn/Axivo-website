@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const statsData = [
   { value: 6, suffix: '+', label: { it: 'Aree di servizio', en: 'Service areas' } },
@@ -35,20 +36,22 @@ function StatItem({
   label,
   started,
   delay,
+  isMobile,
 }: {
   value: number
   suffix: string
   label: string
   started: boolean
   delay: number
+  isMobile: boolean
 }) {
   const count = useCountUp(value, 2000, started)
 
   return (
     <motion.div
       className="flex flex-col items-center text-center"
-      animate={{ opacity: started ? 1 : 0, y: started ? 0 : 30 }}
-      transition={{ duration: 0.6, delay }}
+      animate={isMobile ? { opacity: 1, y: 0 } : { opacity: started ? 1 : 0, y: started ? 0 : 30 }}
+      transition={{ duration: 0.6, delay: isMobile ? 0 : delay }}
     >
       <div className="text-5xl md:text-6xl font-bold" style={{ color: '#00C8FF', fontFamily: 'Space Grotesk, sans-serif' }}>
         {count}<span>{suffix}</span>
@@ -60,8 +63,8 @@ function StatItem({
           width: '80px',
           transformOrigin: 'left',
         }}
-        animate={{ scaleX: started ? 1 : 0 }}
-        transition={{ duration: 1.2, ease: 'easeOut', delay: delay + 0.4 }}
+        animate={isMobile ? { scaleX: 1 } : { scaleX: started ? 1 : 0 }}
+        transition={{ duration: 1.2, ease: 'easeOut', delay: isMobile ? 0 : delay + 0.4 }}
       />
       <p className="text-xs uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Space Grotesk, sans-serif' }}>
         {label}
@@ -72,6 +75,7 @@ function StatItem({
 
 export default function Stats() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -95,6 +99,7 @@ export default function Stats() {
               label={stat.label[lang]}
               started={inView}
               delay={i * 0.12}
+              isMobile={isMobile}
             />
           ))}
         </div>

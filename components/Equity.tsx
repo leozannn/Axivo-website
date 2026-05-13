@@ -24,13 +24,13 @@ export default function Equity() {
       id="equity"
       className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0F1628' }}
-      initial="hidden"
-      whileInView="visible"
+      initial={isMobile ? "visible" : "hidden"}
+      whileInView={isMobile ? undefined : "visible"}
       viewport={{ once: true, margin: '-80px' }}
       variants={fadeIn}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
           <motion.div variants={fadeUp} className="mb-3">
             <span className="ordinal">{t(tr.tag, lang)}</span>
           </motion.div>
@@ -52,8 +52,8 @@ export default function Equity() {
               {/* Cash + Equity cards — stacked on mobile, side-by-side on desktop */}
               <div className="flex flex-col sm:flex-row gap-4 items-stretch mb-8">
                 <motion.div
-                  initial={{ opacity: 0, x: -60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={isMobile ? false : { opacity: 0, x: -60 }}
+                  whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.7, ease: EASE }}
                   className="glass-card rounded-xl p-5 flex-1"
@@ -78,8 +78,8 @@ export default function Equity() {
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: 60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={isMobile ? false : { opacity: 0, x: 60 }}
+                  whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.7, ease: EASE }}
                   className="glass-card rounded-xl p-5 flex-1"
@@ -99,8 +99,8 @@ export default function Equity() {
                 {benefits.map((b, i) => (
                   <motion.div
                     key={b.title}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={isMobile ? false : { opacity: 0, y: 24 }}
+                    whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.55, delay: 0.2 + i * 0.13, ease: EASE }}
                     className="flex gap-4 items-start"
@@ -157,8 +157,8 @@ export default function Equity() {
                 {tr.rows.map((row, i) => (
                   <React.Fragment key={i}>
                     <motion.div
-                      initial={{ opacity: 0, x: -40 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={isMobile ? false : { opacity: 0, x: -40 }}
+                      whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: i * 0.1 }}
                       viewport={{ once: true }}
                       className="p-3 text-xs"
@@ -170,8 +170,8 @@ export default function Equity() {
                       {t(row.left, lang)}
                     </motion.div>
                     <motion.div
-                      initial={{ opacity: 0, x: 40 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={isMobile ? false : { opacity: 0, x: 40 }}
+                      whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: i * 0.1 + 0.05 }}
                       viewport={{ once: true }}
                       className="p-3 text-xs font-medium"
@@ -192,8 +192,8 @@ export default function Equity() {
                 {tr.rows.map((row, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={isMobile ? false : { opacity: 0, y: 16 }}
+                    whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.07, ease: EASE }}
                     className="rounded-xl overflow-hidden"

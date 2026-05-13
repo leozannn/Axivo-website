@@ -77,13 +77,13 @@ export default function About() {
       id="chi-siamo"
       className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0A0E1A' }}
-      initial="hidden"
-      whileInView="visible"
+      initial={isMobile ? "visible" : "hidden"}
+      whileInView={isMobile ? undefined : "visible"}
       viewport={{ once: true, margin: '-80px' }}
       variants={fadeIn}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
           <motion.div variants={fadeUp} className="mb-3">
             <span className="ordinal">{t(tr.tag, lang)}</span>
           </motion.div>
@@ -128,8 +128,8 @@ export default function About() {
             {props.map((p, i) => (
               <motion.div
                 key={p.num}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={isMobile ? false : { opacity: 0, y: 50 }}
+                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.7, delay: i * 0.15, ease: EASE }}
                 whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0, 200, 255, 0.18)' }}

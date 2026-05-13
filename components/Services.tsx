@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
 
 export default function Services() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const tr = translations.services
 
   const cards = [
@@ -25,13 +27,13 @@ export default function Services() {
       id="servizi"
       className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0A0E1A' }}
-      initial="hidden"
-      whileInView="visible"
+      initial={isMobile ? "visible" : "hidden"}
+      whileInView={isMobile ? undefined : "visible"}
       viewport={{ once: true, margin: '-80px' }}
       variants={fadeIn}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
           <motion.div variants={fadeUp} className="mb-3">
             <span className="ordinal">{t(tr.tag, lang)}</span>
           </motion.div>
@@ -46,13 +48,13 @@ export default function Services() {
             {t(tr.subtitle, lang)}
           </motion.p>
 
-          {/* First row: 4 cards — enter from above */}
+          {/* First row: 4 cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {cards.slice(0, 4).map((card, i) => (
               <motion.div
                 key={card.num}
-                initial={{ opacity: 0, y: -40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={isMobile ? false : { opacity: 0, y: -40 }}
+                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.65, delay: i * 0.1, ease: EASE }}
                 whileHover={{ y: -6, boxShadow: '0 24px 48px rgba(0,200,255,0.22), inset 0 0 0 1px rgba(0,200,255,0.4)' }}
@@ -79,8 +81,8 @@ export default function Services() {
             {cards.slice(4).map((card, i) => (
               <motion.div
                 key={card.num}
-                initial={{ opacity: 0, y: -40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={isMobile ? false : { opacity: 0, y: -40 }}
+                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.65, delay: (i + 4) * 0.1, ease: EASE }}
                 whileHover={{ y: -6, boxShadow: '0 24px 48px rgba(0,200,255,0.22), inset 0 0 0 1px rgba(0,200,255,0.4)' }}
@@ -102,10 +104,10 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Output box — slow fade-in from below */}
+          {/* Output box */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : { opacity: 0, y: 40 }}
+            whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
             className="rounded-xl p-6"

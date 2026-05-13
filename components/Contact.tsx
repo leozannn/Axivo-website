@@ -5,6 +5,7 @@ import { MapPin, Globe, Mail, ExternalLink, X } from 'lucide-react'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
 
@@ -12,6 +13,7 @@ export default function Contact() {
   const { lang } = useLang()
   const tr = translations.contact
   const ftr = translations.footer
+  const isMobile = useIsMobile()
   const [submitted, setSubmitted] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
 
@@ -31,13 +33,13 @@ export default function Contact() {
       id="contatti"
       className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0A0E1A' }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={isMobile ? false : { opacity: 0, y: 40 }}
+      whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: 'easeOut' }}
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
           <motion.div variants={fadeUp} className="mb-3">
             <span className="ordinal">{t(tr.tag, lang)}</span>
           </motion.div>
@@ -71,8 +73,8 @@ export default function Contact() {
                   {fields.map(({ field, label, inputType }, i) => (
                     <motion.div
                       key={field}
-                      initial={{ opacity: 0, y: 18 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      initial={isMobile ? false : { opacity: 0, y: 18 }}
+                      whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
                     >
@@ -123,8 +125,8 @@ export default function Contact() {
 
             {/* Contact info — from right */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={isMobile ? false : { opacity: 0, x: 40 }}
+              whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
               className="flex flex-col gap-5"

@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
 
 export default function Why() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const tr = translations.cta
 
   const concepts = [
@@ -29,13 +31,13 @@ export default function Why() {
       id="perche-axivo"
       className="py-16 px-4 md:py-24 md:px-6"
       style={{ background: '#0F1628' }}
-      initial="hidden"
-      whileInView="visible"
+      initial={isMobile ? "visible" : "hidden"}
+      whileInView={isMobile ? undefined : "visible"}
       viewport={{ once: true, margin: '-80px' }}
       variants={fadeIn}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
           <motion.h2
             variants={fadeUp}
             className="text-4xl md:text-6xl font-bold mb-6"
@@ -48,15 +50,15 @@ export default function Why() {
             {t(tr.sub, lang)}
           </motion.p>
 
-          {/* 3 concepts — alternate L/R */}
+          {/* 3 concepts */}
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {concepts.map((c, i) => {
               const fromLeft = i % 2 === 0
               return (
                 <motion.div
                   key={c.title}
-                  initial={{ opacity: 0, x: fromLeft ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={isMobile ? false : { opacity: 0, x: fromLeft ? -50 : 50 }}
+                  whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.7, delay: i * 0.12, ease: EASE }}
                   whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0, 200, 255, 0.18)' }}
@@ -71,7 +73,7 @@ export default function Why() {
             })}
           </div>
 
-          {/* Next steps */}
+          {/* Next steps label */}
           <motion.div variants={fadeUp} className="text-xs font-semibold mb-8" style={{ color: '#00C8FF', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
             {t(tr.stepsTitle, lang)}
           </motion.div>
@@ -80,8 +82,8 @@ export default function Why() {
             {nextSteps.map((step, i) => (
               <motion.div
                 key={step.num}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={isMobile ? false : { opacity: 0, y: 30 }}
+                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.15, ease: EASE }}
                 viewport={{ once: true }}
                 className="flex gap-4 items-start flex-1"

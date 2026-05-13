@@ -1,16 +1,13 @@
+'use client'
 import { useState, useEffect } from 'react'
 
-export function useIsMobile() {
+export function useIsMobile(): boolean {
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
-    const check = () =>
-      setIsMobile(
-        window.innerWidth < 768 ||
-        /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-      )
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
+    setIsMobile(
+      window.innerWidth < 768 ||
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    )
   }, [])
   return isMobile
 }

@@ -23,13 +23,14 @@ export default function Navbar() {
       <nav
         style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 50, background: 'transparent' }}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-6 flex items-center justify-between min-h-[100px] md:min-h-[120px]">
           {/* Logo */}
           <a href="#" className="flex items-center" onClick={close}>
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
-              className="h-12 md:h-40 w-auto object-contain"
+              className="h-28 md:h-44 w-auto object-contain"
+              style={{ minHeight: '112px' }}
             />
           </a>
 
@@ -95,7 +96,7 @@ export default function Navbar() {
             {/* Top bar with logo + close */}
             <div className="flex items-center justify-between px-4 py-4">
               <a href="#" onClick={close}>
-                <img src="/axivo-logo.png" className="h-[80px] w-auto" alt="AXIVO Partners" />
+                <img src="/axivo-logo.png" className="h-28 w-auto" alt="AXIVO Partners" />
               </a>
               <button
                 className="w-11 h-11 flex items-center justify-center rounded-lg"
