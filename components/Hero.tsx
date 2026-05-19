@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 function Typewriter() {
   const { lang } = useLang()
@@ -55,6 +56,7 @@ function Typewriter() {
 
 export default function Hero() {
   const { lang } = useLang()
+  const isMobile = useIsMobile()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -130,20 +132,22 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex flex-col justify-start md:justify-center"
+      className="relative min-h-screen flex flex-col justify-center"
       style={{ background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)', overflowX: 'hidden' }}
     >
       {/* Background — static, no parallax scroll listeners */}
       <div className="absolute inset-0 z-0" style={{ pointerEvents: 'none' }}>
-        <canvas
-          ref={canvasRef}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', touchAction: 'none', zIndex: 0 }}
-        />
+        {!isMobile && (
+          <canvas
+            ref={canvasRef}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', touchAction: 'none', zIndex: 0 }}
+          />
+        )}
         <div className="dot-grid absolute top-0 right-0 opacity-40" style={{ width: '320px', height: '320px' }} />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-36 pb-10 md:pt-32 md:pb-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-20 pb-10 md:pt-32 md:pb-8">
         {/* Headline — word-by-word stagger */}
         <h1
           className="text-4xl md:text-7xl font-bold leading-tight mb-6"
@@ -157,9 +161,9 @@ export default function Hero() {
             return (
               <motion.span
                 key={`${lang}-${i}`}
-                initial={{ opacity: 0, y: 30 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: 'easeOut' }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: 0.1 + i * 0.08, ease: 'easeOut' }}
                 className="inline-block mr-[0.25em]"
               >
                 {isLast ? (
@@ -178,18 +182,18 @@ export default function Hero() {
 
         {/* Separator */}
         <motion.div
-          initial={{ scaleX: 0 }}
+          initial={isMobile ? { scaleX: 1 } : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.7, delay: 0.5 }}
           className="separator-cyan mb-8"
           style={{ maxWidth: '600px', transformOrigin: 'left' }}
         />
 
         {/* Subline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: 0.55 }}
           className="text-lg md:text-xl mb-10 max-w-xl"
           style={{ color: '#94A3B8', lineHeight: 1.7 }}
         >
@@ -198,9 +202,9 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: 0.7 }}
           className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4"
         >
           <a href="#servizi" className="btn-glow px-7 py-3 rounded-lg text-base font-semibold text-center sm:text-left">
@@ -220,9 +224,9 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
+        transition={isMobile ? { duration: 0 } : { delay: 1.4 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             window.history.scrollRestoration = 'manual';
             window.scrollTo(0, 0);
           }
+          document.documentElement.style.backgroundColor = '#0A0E1A';
         ` }} />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -38,7 +39,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full">
+      <body className="min-h-full" style={{ backgroundColor: '#0A0E1A', color: '#ffffff' }}>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            var ua = navigator.userAgent;
+            var isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua) || window.innerWidth < 768;
+            if (isMobile) {
+              document.documentElement.style.overflow = 'auto';
+              document.documentElement.style.height = 'auto';
+              document.documentElement.style.position = 'static';
+              document.body.style.overflow = 'auto';
+              document.body.style.height = 'auto';
+              document.body.style.position = 'static';
+              document.body.style.backgroundColor = '#0A0E1A';
+              document.body.style.color = '#ffffff';
+              window.scrollTo(0, 0);
+            }
+          })();
+        `}} />
         <LanguageProvider>
           <SmoothScroll>
             {children}
