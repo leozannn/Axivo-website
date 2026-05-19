@@ -1,15 +1,10 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
-import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
-import { useIsMobile } from '@/lib/useIsMobile'
-
-const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+import AnimatedSection from '@/components/AnimatedSection'
 
 export default function Why() {
   const { lang } = useLang()
-  const isMobile = useIsMobile()
   const tr = translations.cta
 
   const concepts = [
@@ -27,85 +22,118 @@ export default function Why() {
   const headline = t(tr.title, lang)
 
   return (
-    <motion.section
+    <section
       id="perche-axivo"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: '#0F1628' }}
-      initial={isMobile ? "visible" : "hidden"}
-      whileInView={isMobile ? undefined : "visible"}
-      viewport={{ once: true, margin: '-80px' }}
-      variants={fadeIn}
+      style={{ backgroundColor: '#0F1628' }}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
-          <motion.h2
-            variants={fadeUp}
-            className="text-4xl md:text-6xl font-bold mb-6"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', whiteSpace: 'pre-line' }}
+        <AnimatedSection delay={0.1}>
+          <h2
+            className="text-3xl md:text-6xl font-bold mb-6"
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              color: '#ffffff',
+              whiteSpace: 'pre-line',
+            }}
           >
             {headline}
-          </motion.h2>
+          </h2>
+        </AnimatedSection>
 
-          <motion.p variants={fadeUp} className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
+        <AnimatedSection delay={0.2}>
+          <p className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
             {t(tr.sub, lang)}
-          </motion.p>
+          </p>
+        </AnimatedSection>
 
-          {/* 3 concepts */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {concepts.map((c, i) => {
-              const fromLeft = i % 2 === 0
-              return (
-                <motion.div
-                  key={c.title}
-                  initial={isMobile ? false : { opacity: 0, x: fromLeft ? -50 : 50 }}
-                  whileInView={isMobile ? undefined : { opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.7, delay: i * 0.12, ease: EASE }}
-                  whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0, 200, 255, 0.18)' }}
-                  className="glass-card rounded-xl p-6 cursor-pointer"
-                >
-                  <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#00C8FF' }}>
-                    {c.title}
-                  </h3>
-                  <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{c.sub}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-
-          {/* Next steps label */}
-          <motion.div variants={fadeUp} className="text-xs font-semibold mb-8" style={{ color: '#00C8FF', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            {t(tr.stepsTitle, lang)}
-          </motion.div>
-
-          <div className="flex flex-col md:flex-row gap-6 mb-12">
-            {nextSteps.map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={isMobile ? false : { opacity: 0, y: 30 }}
-                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.15, ease: EASE }}
-                viewport={{ once: true }}
-                className="flex gap-4 items-start flex-1"
+        {/* 3 concepts — 1 col mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {concepts.map((c, i) => (
+            <AnimatedSection
+              key={c.title}
+              delay={i * 0.12}
+              direction={i % 2 === 0 ? 'left' : 'right'}
+            >
+              <div
+                className="rounded-xl p-6"
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(0,200,255,0.15)',
+                  height: '100%',
+                }}
               >
+                <h3
+                  className="text-xl font-semibold mb-2"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#00C8FF' }}
+                >
+                  {c.title}
+                </h3>
+                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                  {c.sub}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        {/* Next steps label */}
+        <AnimatedSection delay={0.15}>
+          <div
+            style={{
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              color: '#00C8FF',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              marginBottom: '32px',
+            }}
+          >
+            {t(tr.stepsTitle, lang)}
+          </div>
+        </AnimatedSection>
+
+        <div className="flex flex-col md:flex-row gap-6 mb-12">
+          {nextSteps.map((step, i) => (
+            <AnimatedSection key={step.num} delay={i * 0.15} style={{ flex: 1 }}>
+              <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                 <div
-                  className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-                  style={{ border: '2px solid #00C8FF', color: '#00C8FF', fontFamily: 'Space Grotesk, sans-serif' }}
+                  style={{
+                    flexShrink: 0,
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    border: '2px solid #00C8FF',
+                    color: '#00C8FF',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '0.875rem',
+                  }}
                 >
                   {step.num}
                 </div>
-                <p className="text-sm pt-2" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{step.label}</p>
-              </motion.div>
-            ))}
-          </div>
+                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem', paddingTop: '8px' }}>
+                  {step.label}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
 
-          <motion.div variants={fadeUp} className="text-center">
-            <a href="#contatti" className="btn-glow shimmer-btn px-10 py-4 rounded-lg text-base font-semibold inline-block">
+        <AnimatedSection delay={0.2}>
+          <div style={{ textAlign: 'center' }}>
+            <a
+              href="#contatti"
+              className="btn-glow shimmer-btn px-10 py-4 rounded-lg text-base font-semibold inline-block"
+            >
               {lang === 'it' ? 'Inizia ora' : 'Get started'}
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </AnimatedSection>
       </div>
-    </motion.section>
+    </section>
   )
 }

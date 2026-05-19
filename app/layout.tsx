@@ -21,13 +21,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" className="antialiased">
       <head>
-        {/* Disabilita scroll restoration del browser prima dell'idratazione React */}
         <script dangerouslySetInnerHTML={{ __html: `
-          if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
-            window.history.scrollRestoration = 'manual';
-            window.scrollTo(0, 0);
-          }
-          document.documentElement.style.backgroundColor = '#0A0E1A';
+          (function() {
+            try {
+              document.documentElement.style.backgroundColor = '#0A0E1A';
+              if ('scrollRestoration' in window.history) {
+                window.history.scrollRestoration = 'manual';
+              }
+              window.scrollTo(0, 0);
+            } catch(e) {}
+          })();
         ` }} />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -39,22 +42,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full" style={{ backgroundColor: '#0A0E1A', color: '#ffffff' }}>
+      <body style={{ backgroundColor: '#0A0E1A', color: '#ffffff' }}>
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
-            var ua = navigator.userAgent;
-            var isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua) || window.innerWidth < 768;
-            if (isMobile) {
-              document.documentElement.style.overflow = 'auto';
-              document.documentElement.style.height = 'auto';
-              document.documentElement.style.position = 'static';
-              document.body.style.overflow = 'auto';
-              document.body.style.height = 'auto';
-              document.body.style.position = 'static';
-              document.body.style.backgroundColor = '#0A0E1A';
-              document.body.style.color = '#ffffff';
-              window.scrollTo(0, 0);
-            }
+            try {
+              var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+              if (isMobile) {
+                document.documentElement.style.backgroundColor = '#0A0E1A';
+                document.documentElement.style.color = '#ffffff';
+                document.documentElement.style.overflowY = 'auto';
+                document.documentElement.style.height = 'auto';
+                document.body.style.backgroundColor = '#0A0E1A';
+                document.body.style.color = '#ffffff';
+                document.body.style.overflowY = 'auto';
+                document.body.style.height = 'auto';
+                document.body.style.touchAction = 'pan-y';
+                window.history.scrollRestoration = 'manual';
+                window.scrollTo(0, 0);
+              }
+            } catch(e) {}
           })();
         `}} />
         <LanguageProvider>

@@ -8,17 +8,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       /iPhone|iPad|iPod|Android|webOS|BlackBerry/i.test(navigator.userAgent)
 
     if (isMobile) {
-      ;[document.documentElement, document.body].forEach(el => {
-        el.style.cssText = ''
-        el.style.overflowX = 'hidden'
-        el.style.overflowY = 'auto'
-        el.style.height = 'auto'
-        el.style.position = 'static'
-        el.style.touchAction = 'pan-y'
-        ;(el.style as any).webkitOverflowScrolling = 'touch'
-      })
-      document.documentElement.style.backgroundColor = '#0A0E1A'
-      document.body.style.backgroundColor = '#0A0E1A'
+      document.documentElement.style.cssText =
+        'overflow-x:hidden;overflow-y:auto;height:auto;position:static;background-color:#0A0E1A;'
+      document.body.style.cssText =
+        'overflow-x:hidden;overflow-y:auto;height:auto;position:static;touch-action:pan-y;-webkit-overflow-scrolling:touch;background-color:#0A0E1A;color:#ffffff;'
       return
     }
 
@@ -28,8 +21,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       try {
         const Lenis = (await import('@studio-freight/lenis')).default
         lenis = new Lenis({ duration: 1.2, smoothWheel: true })
-        const raf = (time: number) => {
-          lenis.raf(time)
+        const raf = (t: number) => {
+          lenis.raf(t)
           animId = requestAnimationFrame(raf)
         }
         animId = requestAnimationFrame(raf)

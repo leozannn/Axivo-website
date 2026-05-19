@@ -1,8 +1,9 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { useIsMobile } from '@/lib/useIsMobile'
+import AnimatedSection from '@/components/AnimatedSection'
+import { useInView } from 'framer-motion'
 
 const statsData = [
   { value: 6, suffix: '+', label: { it: 'Aree di servizio', en: 'Service areas' } },
@@ -45,32 +46,45 @@ function StatItem({
   delay: number
   isMobile: boolean
 }) {
-  const count = useCountUp(value, 2000, started)
+  const count = useCountUp(value, 2000, isMobile ? true : started)
 
-  return (
-    <motion.div
-      className="flex flex-col items-center text-center"
-      animate={isMobile ? { opacity: 1, y: 0 } : { opacity: started ? 1 : 0, y: started ? 0 : 30 }}
-      transition={{ duration: 0.6, delay: isMobile ? 0 : delay }}
-    >
-      <div className="text-5xl md:text-6xl font-bold" style={{ color: '#00C8FF', fontFamily: 'Space Grotesk, sans-serif' }}>
+  const inner = (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+      <div
+        style={{
+          color: '#00C8FF',
+          fontFamily: 'Space Grotesk, sans-serif',
+          fontWeight: 700,
+          fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
+        }}
+      >
         {count}<span>{suffix}</span>
       </div>
-      <motion.div
-        className="my-4 h-px"
+      <div
         style={{
-          background: 'linear-gradient(90deg, transparent, #00C8FF, transparent)',
+          margin: '16px 0',
+          height: '1px',
           width: '80px',
-          transformOrigin: 'left',
+          background: 'linear-gradient(90deg, transparent, #00C8FF, transparent)',
         }}
-        animate={isMobile ? { scaleX: 1 } : { scaleX: started ? 1 : 0 }}
-        transition={{ duration: 1.2, ease: 'easeOut', delay: isMobile ? 0 : delay + 0.4 }}
       />
-      <p className="text-xs uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Space Grotesk, sans-serif' }}>
+      <p
+        style={{
+          fontSize: '0.75rem',
+          textTransform: 'uppercase',
+          letterSpacing: '0.1em',
+          color: 'rgba(255,255,255,0.55)',
+          fontFamily: 'Space Grotesk, sans-serif',
+        }}
+      >
         {label}
       </p>
-    </motion.div>
+    </div>
   )
+
+  if (isMobile) return inner
+
+  return <AnimatedSection delay={delay}>{inner}</AnimatedSection>
 }
 
 export default function Stats() {
@@ -82,12 +96,12 @@ export default function Stats() {
   return (
     <section
       ref={ref}
-      className="py-20 px-6"
       style={{
-        background: '#0F1628',
+        backgroundColor: '#0F1628',
         borderTop: '1px solid rgba(0,200,255,0.08)',
         borderBottom: '1px solid rgba(0,200,255,0.08)',
       }}
+      className="py-20 px-6"
     >
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">

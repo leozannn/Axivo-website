@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 
 export function useIsMobile(): boolean {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(true) // default true → SSR safe, prevents opacity:0 flash
   useEffect(() => {
     setIsMobile(
       window.innerWidth < 768 ||

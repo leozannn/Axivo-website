@@ -1,15 +1,10 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
-import { fadeUp, fadeIn, staggerContainer } from '@/lib/animations'
-import { useIsMobile } from '@/lib/useIsMobile'
-
-const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+import AnimatedSection from '@/components/AnimatedSection'
 
 export default function Services() {
   const { lang } = useLang()
-  const isMobile = useIsMobile()
   const tr = translations.services
 
   const cards = [
@@ -22,104 +17,130 @@ export default function Services() {
     { num: '07', title: t(tr.s7title, lang), text: t(tr.s7text, lang) },
   ]
 
+  const cardStyle = {
+    background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(0,200,255,0.15)',
+    borderRadius: '12px',
+    padding: '24px',
+  }
+
   return (
-    <motion.section
+    <section
       id="servizi"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ background: '#0A0E1A' }}
-      initial={isMobile ? "visible" : "hidden"}
-      whileInView={isMobile ? undefined : "visible"}
-      viewport={{ once: true, margin: '-80px' }}
-      variants={fadeIn}
+      style={{ backgroundColor: '#0A0E1A' }}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={staggerContainer} initial={isMobile ? "visible" : "hidden"} whileInView={isMobile ? undefined : "visible"} viewport={{ once: true }}>
-          <motion.div variants={fadeUp} className="mb-3">
-            <span className="ordinal">{t(tr.tag, lang)}</span>
-          </motion.div>
+        <AnimatedSection delay={0.1}>
+          <span className="ordinal">{t(tr.tag, lang)}</span>
+        </AnimatedSection>
 
-          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+        <AnimatedSection delay={0.15}>
+          <h2
+            className="text-3xl md:text-5xl font-bold mb-4 mt-3"
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
+          >
             {t(tr.title, lang)}
-          </motion.h2>
+          </h2>
+        </AnimatedSection>
 
-          <motion.div variants={fadeUp} className="separator-cyan mb-6" style={{ maxWidth: '200px' }} />
+        <AnimatedSection delay={0.2}>
+          <div className="separator-cyan mb-6" style={{ maxWidth: '200px' }} />
+        </AnimatedSection>
 
-          <motion.p variants={fadeUp} className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
+        <AnimatedSection delay={0.25}>
+          <p className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
             {t(tr.subtitle, lang)}
-          </motion.p>
+          </p>
+        </AnimatedSection>
 
-          {/* First row: 4 cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {cards.slice(0, 4).map((card, i) => (
-              <motion.div
-                key={card.num}
-                initial={isMobile ? false : { opacity: 0, y: -40 }}
-                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.65, delay: i * 0.1, ease: EASE }}
-                whileHover={{ y: -6, boxShadow: '0 24px 48px rgba(0,200,255,0.22), inset 0 0 0 1px rgba(0,200,255,0.4)' }}
-                className="glass-card rounded-xl p-6 cursor-pointer relative overflow-hidden group"
-              >
-                <div
-                  className="absolute top-0 left-0 w-24 h-24 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: 'rgba(0,200,255,0.1)', transform: 'translate(-2rem, -2rem)' }}
-                />
+        {/* All 7 cards — 1 col mobile, 2 col tablet, 4 col desktop for first row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {cards.slice(0, 4).map((card, i) => (
+            <AnimatedSection key={card.num} delay={i * 0.08}>
+              <div style={cardStyle}>
                 <span
-                  className="text-sm font-mono font-bold block mb-4 transition-all duration-300 opacity-50 group-hover:opacity-100"
-                  style={{ color: '#00C8FF' }}
+                  style={{
+                    color: '#00C8FF',
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    fontSize: '0.875rem',
+                    display: 'block',
+                    marginBottom: '16px',
+                    opacity: 0.7,
+                  }}
                 >
                   {card.num}
                 </span>
-                <h3 className="font-semibold text-base mb-3" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{card.title}</h3>
-                <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{card.text}</p>
-              </motion.div>
-            ))}
-          </div>
+                <h3
+                  className="font-semibold text-base mb-3"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
+                >
+                  {card.title}
+                </h3>
+                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                  {card.text}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
 
-          {/* Second row: 3 cards centered */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 lg:max-w-[75%] lg:mx-auto">
-            {cards.slice(4).map((card, i) => (
-              <motion.div
-                key={card.num}
-                initial={isMobile ? false : { opacity: 0, y: -40 }}
-                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.65, delay: (i + 4) * 0.1, ease: EASE }}
-                whileHover={{ y: -6, boxShadow: '0 24px 48px rgba(0,200,255,0.22), inset 0 0 0 1px rgba(0,200,255,0.4)' }}
-                className="glass-card rounded-xl p-6 cursor-pointer relative overflow-hidden group"
-              >
-                <div
-                  className="absolute top-0 left-0 w-24 h-24 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: 'rgba(0,200,255,0.1)', transform: 'translate(-2rem, -2rem)' }}
-                />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 lg:max-w-[75%] lg:mx-auto">
+          {cards.slice(4).map((card, i) => (
+            <AnimatedSection key={card.num} delay={(i + 4) * 0.08}>
+              <div style={cardStyle}>
                 <span
-                  className="text-sm font-mono font-bold block mb-4 transition-all duration-300 opacity-50 group-hover:opacity-100"
-                  style={{ color: '#00C8FF' }}
+                  style={{
+                    color: '#00C8FF',
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    fontSize: '0.875rem',
+                    display: 'block',
+                    marginBottom: '16px',
+                    opacity: 0.7,
+                  }}
                 >
                   {card.num}
                 </span>
-                <h3 className="font-semibold text-base mb-3" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{card.title}</h3>
-                <p className="text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>{card.text}</p>
-              </motion.div>
-            ))}
-          </div>
+                <h3
+                  className="font-semibold text-base mb-3"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
+                >
+                  {card.title}
+                </h3>
+                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                  {card.text}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
 
-          {/* Output box */}
-          <motion.div
-            initial={isMobile ? false : { opacity: 0, y: 40 }}
-            whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
+        {/* Output box */}
+        <AnimatedSection delay={0.3}>
+          <div
             className="rounded-xl p-6"
             style={{ background: 'rgba(0,200,255,0.06)', border: '1px solid rgba(0,200,255,0.3)' }}
           >
-            <div className="text-xs font-semibold mb-2" style={{ color: '#00C8FF', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <div
+              style={{
+                color: '#00C8FF',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                marginBottom: '8px',
+              }}
+            >
               {t(tr.outputLabel, lang)}
             </div>
-            <p className="text-base" style={{ color: '#E2E8F0', lineHeight: 1.7 }}>{t(tr.outputText, lang)}</p>
-          </motion.div>
-        </motion.div>
+            <p style={{ color: '#E2E8F0', lineHeight: 1.7, fontSize: '1rem' }}>
+              {t(tr.outputText, lang)}
+            </p>
+          </div>
+        </AnimatedSection>
       </div>
-    </motion.section>
+    </section>
   )
 }
