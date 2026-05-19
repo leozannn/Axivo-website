@@ -142,6 +142,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="pt-28 md:pt-0"
       style={{
         backgroundColor: '#0A0E1A',
         background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)',
@@ -190,7 +191,7 @@ export default function Hero() {
           maxWidth: '1280px',
           margin: '0 auto',
           width: '100%',
-          padding: '100px 24px 48px',
+          padding: '0 24px 48px',
         }}
         className="md:px-6 md:pt-32 md:pb-8"
       >

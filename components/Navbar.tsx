@@ -27,6 +27,7 @@ export default function Navbar() {
           right: 0,
           zIndex: 50,
           background: 'transparent',
+          minHeight: '90px',
         }}
       >
         <div
@@ -44,7 +45,7 @@ export default function Navbar() {
             <img
               src="/axivo-logo.png"
               alt="AXIVO Partners"
-              className="h-12 md:h-44 w-auto object-contain"
+              className="h-24 md:h-40 w-auto object-contain"
             />
           </a>
 

@@ -24,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
             try {
-              document.documentElement.style.backgroundColor = '#0A0E1A';
               if ('scrollRestoration' in window.history) {
                 window.history.scrollRestoration = 'manual';
               }
@@ -43,26 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body style={{ backgroundColor: '#0A0E1A', color: '#ffffff' }}>
-        <script dangerouslySetInnerHTML={{ __html: `
-          (function() {
-            try {
-              var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
-              if (isMobile) {
-                document.documentElement.style.backgroundColor = '#0A0E1A';
-                document.documentElement.style.color = '#ffffff';
-                document.documentElement.style.overflowY = 'auto';
-                document.documentElement.style.height = 'auto';
-                document.body.style.backgroundColor = '#0A0E1A';
-                document.body.style.color = '#ffffff';
-                document.body.style.overflowY = 'auto';
-                document.body.style.height = 'auto';
-                document.body.style.touchAction = 'pan-y';
-                window.history.scrollRestoration = 'manual';
-                window.scrollTo(0, 0);
-              }
-            } catch(e) {}
-          })();
-        `}} />
         <LanguageProvider>
           <SmoothScroll>
             {children}

@@ -8,8 +8,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       /iPhone|iPad|iPod|Android|webOS|BlackBerry/i.test(navigator.userAgent)
 
     if (isMobile) {
-      document.documentElement.style.cssText =
-        'overflow-x:hidden;overflow-y:auto;height:auto;position:static;background-color:#0A0E1A;'
+      // Only touch document.body — never documentElement (causes hydration mismatch on <html>)
       document.body.style.cssText =
         'overflow-x:hidden;overflow-y:auto;height:auto;position:static;touch-action:pan-y;-webkit-overflow-scrolling:touch;background-color:#0A0E1A;color:#ffffff;'
       return

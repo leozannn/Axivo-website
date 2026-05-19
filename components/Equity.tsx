@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { translations, t } from '@/lib/translations'
 import AnimatedSection from '@/components/AnimatedSection'
@@ -44,12 +43,9 @@ export default function Equity() {
           </p>
         </AnimatedSection>
 
-        {/* Split layout — stack on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mb-10 md:mb-12">
-          {/* Left column */}
-          <div>
-            {/* Cash + Equity cards */}
-            <div className="flex flex-col sm:flex-row gap-4 items-stretch mb-8">
+        <div className="mb-10 md:mb-12">
+          {/* Cash + Equity cards */}
+          <div className="flex flex-col sm:flex-row gap-4 items-stretch mb-8">
               <AnimatedSection delay={0.1} direction="left" style={{ flex: 1 }}>
                 <div
                   className="rounded-xl p-5"
@@ -153,118 +149,6 @@ export default function Equity() {
                 </AnimatedSection>
               ))}
             </div>
-          </div>
-
-          {/* Right: comparison table */}
-          <AnimatedSection delay={0.3}>
-            <div
-              className="rounded-xl overflow-hidden"
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(0,200,255,0.15)',
-              }}
-            >
-              <div
-                style={{
-                  color: '#00C8FF',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  padding: '16px 16px 8px',
-                }}
-              >
-                {t(tr.whyTitle, lang)}
-              </div>
-
-              {/* Desktop 2-column grid */}
-              <div className="hidden sm:grid grid-cols-2">
-                <div
-                  style={{
-                    padding: '12px',
-                    fontSize: '0.75rem',
-                    fontWeight: 600,
-                    color: '#94A3B8',
-                    borderBottom: '1px solid rgba(255,255,255,0.05)',
-                    background: 'rgba(255,255,255,0.02)',
-                  }}
-                >
-                  {t(tr.col1, lang)}
-                </div>
-                <div
-                  style={{
-                    padding: '12px',
-                    fontSize: '0.75rem',
-                    fontWeight: 600,
-                    color: '#00C8FF',
-                    borderBottom: '1px solid rgba(255,255,255,0.05)',
-                    background: 'rgba(0,200,255,0.05)',
-                  }}
-                >
-                  {t(tr.col2, lang)}
-                </div>
-                {tr.rows.map((row, i) => (
-                  <React.Fragment key={i}>
-                    <div
-                      style={{
-                        padding: '12px',
-                        fontSize: '0.75rem',
-                        color: '#64748B',
-                        borderBottom: i < tr.rows.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-                      }}
-                    >
-                      {t(row.left, lang)}
-                    </div>
-                    <div
-                      style={{
-                        padding: '12px',
-                        fontSize: '0.75rem',
-                        fontWeight: 500,
-                        color: '#E2E8F0',
-                        borderBottom: i < tr.rows.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-                        background: 'rgba(0,200,255,0.02)',
-                      }}
-                    >
-                      {t(row.right, lang)}
-                    </div>
-                  </React.Fragment>
-                ))}
-              </div>
-
-              {/* Mobile: vertical cards */}
-              <div className="sm:hidden" style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px' }}>
-                {tr.rows.map((row, i) => (
-                  <div
-                    key={i}
-                    style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}
-                  >
-                    <div
-                      style={{
-                        padding: '12px 16px',
-                        fontSize: '0.75rem',
-                        color: 'rgba(255,255,255,0.45)',
-                        background: 'rgba(255,255,255,0.03)',
-                      }}
-                    >
-                      {t(row.left, lang)}
-                    </div>
-                    <div
-                      style={{
-                        padding: '12px 16px',
-                        fontSize: '0.75rem',
-                        fontWeight: 500,
-                        color: '#E2E8F0',
-                        background: 'rgba(0,200,255,0.06)',
-                        borderTop: '1px solid rgba(0,200,255,0.15)',
-                      }}
-                    >
-                      {t(row.right, lang)}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
         </div>
 
         {/* Distinction box */}

@@ -8,7 +8,6 @@ import Target from '@/components/Target'
 import Services from '@/components/Services'
 import Equity from '@/components/Equity'
 import EquitySteps from '@/components/EquitySteps'
-import Why from '@/components/Why'
 import Contact from '@/components/Contact'
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
       <Services />
       <Equity />
       <EquitySteps />
-      <Why />
       <Contact />
     </main>
   )
