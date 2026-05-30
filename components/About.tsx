@@ -17,7 +17,7 @@ export default function About() {
     <section
       id="chi-siamo"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ backgroundColor: '#0D1B2A' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>
@@ -27,7 +27,7 @@ export default function About() {
         <AnimatedSection delay={0.15}>
           <h2
             className="text-3xl md:text-5xl font-bold mb-4 mt-3"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
           >
             {t(tr.title, lang)}
           </h2>
@@ -42,8 +42,8 @@ export default function About() {
           <div
             className="rounded-xl p-6"
             style={{
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(0,200,255,0.2)',
+              background: 'rgba(10,14,26,0.04)',
+              border: '1px solid rgba(10,14,26,0.12)',
             }}
           >
             <div
@@ -58,17 +58,17 @@ export default function About() {
             >
               {t(tr.vpLabel, lang)}
             </div>
-            <p style={{ color: '#E2E8F0', lineHeight: 1.7, marginBottom: '12px', fontSize: '1rem' }}>
+            <p style={{ color: '#0A0E1A', lineHeight: 1.7, marginBottom: '12px', fontSize: '1rem' }}>
               {t(tr.vpText, lang)}
             </p>
-            <p style={{ color: '#94A3B8', lineHeight: 1.7, fontSize: '0.875rem' }}>
+            <p style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.7, fontSize: '0.875rem' }}>
               {t(tr.vpSub, lang)}
             </p>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.3}>
-          <p className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8' }}>
+          <p className="text-base mb-12 max-w-xl" style={{ color: 'rgba(10,14,26,0.65)' }}>
             {t(tr.subtitle, lang)}
           </p>
         </AnimatedSection>
@@ -80,8 +80,8 @@ export default function About() {
               <div
                 className="rounded-xl p-6"
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(0,200,255,0.15)',
+                  background: 'rgba(10,14,26,0.04)',
+                  border: '1px solid rgba(10,14,26,0.12)',
                   height: '100%',
                 }}
               >
@@ -98,11 +98,11 @@ export default function About() {
                 </div>
                 <h3
                   className="text-lg font-semibold mb-3"
-                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
                 >
                   {p.title}
                 </h3>
-                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                <p style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.6, fontSize: '0.875rem' }}>
                   {p.text}
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function About() {
             >
               {t(tr.missionLabel, lang)}
             </div>
-            <p style={{ color: '#E2E8F0', lineHeight: 1.7, fontSize: '1rem' }}>
+            <p style={{ color: '#0A0E1A', lineHeight: 1.7, fontSize: '1rem' }}>
               {t(tr.missionText, lang)}
             </p>
           </div>

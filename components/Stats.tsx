@@ -71,7 +71,7 @@ function StatItem({
           fontSize: '0.75rem',
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          color: 'rgba(255,255,255,0.55)',
+          color: 'rgba(10,14,26,0.65)',
           fontFamily: 'Space Grotesk, sans-serif',
         }}
       >
@@ -95,7 +95,7 @@ export default function Stats() {
     <section
       ref={ref}
       style={{
-        backgroundColor: '#112236',
+        backgroundColor: '#F5F7FA',
         borderTop: '1px solid rgba(0,200,255,0.08)',
         borderBottom: '1px solid rgba(0,200,255,0.08)',
       }}

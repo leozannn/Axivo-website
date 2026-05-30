@@ -56,9 +56,9 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 className="text-sm font-medium transition-colors"
-                style={{ color: '#94A3B8', textDecoration: 'none' }}
+                style={{ color: 'rgba(10,14,26,0.65)', textDecoration: 'none' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#00C8FF')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#94A3B8')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(10,14,26,0.65)')}
               >
                 {l.label}
               </a>
@@ -76,11 +76,11 @@ export default function Navbar() {
                   cursor: 'pointer',
                   fontWeight: 600,
                   fontSize: '14px',
-                  color: lang === 'it' ? '#00C8FF' : 'rgba(255,255,255,0.5)',
+                  color: lang === 'it' ? '#00C8FF' : 'rgba(10,14,26,0.4)',
                   padding: '0 4px',
                 }}
               >IT</button>
-              <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '14px' }}>|</span>
+              <span style={{ color: 'rgba(10,14,26,0.2)', fontSize: '14px' }}>|</span>
               <button
                 onClick={() => setLang('en')}
                 style={{
@@ -89,7 +89,7 @@ export default function Navbar() {
                   cursor: 'pointer',
                   fontWeight: 600,
                   fontSize: '14px',
-                  color: lang === 'en' ? '#00C8FF' : 'rgba(255,255,255,0.5)',
+                  color: lang === 'en' ? '#00C8FF' : 'rgba(10,14,26,0.4)',
                   padding: '0 4px',
                 }}
               >EN</button>
@@ -113,10 +113,10 @@ export default function Navbar() {
                 cursor: 'pointer',
                 fontWeight: 600,
                 fontSize: '13px',
-                color: lang === 'it' ? '#00C8FF' : 'rgba(255,255,255,0.5)',
+                color: lang === 'it' ? '#00C8FF' : 'rgba(10,14,26,0.4)',
               }}
             >IT</button>
-            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px' }}>|</span>
+            <span style={{ color: 'rgba(10,14,26,0.2)', fontSize: '13px' }}>|</span>
             <button
               onClick={() => setLang('en')}
               style={{
@@ -125,7 +125,7 @@ export default function Navbar() {
                 cursor: 'pointer',
                 fontWeight: 600,
                 fontSize: '13px',
-                color: lang === 'en' ? '#00C8FF' : 'rgba(255,255,255,0.5)',
+                color: lang === 'en' ? '#00C8FF' : 'rgba(10,14,26,0.4)',
               }}
             >EN</button>
             <button
@@ -134,7 +134,7 @@ export default function Navbar() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: 'white',
+                color: '#0A0E1A',
                 cursor: 'pointer',
                 padding: '8px',
                 display: 'flex',
@@ -154,7 +154,7 @@ export default function Navbar() {
             position: 'fixed',
             inset: 0,
             zIndex: 100,
-            backgroundColor: '#0D1B2A',
+            backgroundColor: '#FFFFFF',
             display: 'flex',
             flexDirection: 'column',
             padding: '80px 32px 40px',
@@ -169,7 +169,7 @@ export default function Navbar() {
               right: 24,
               background: 'none',
               border: 'none',
-              color: 'white',
+              color: '#0A0E1A',
               cursor: 'pointer',
             }}
           >
@@ -183,13 +183,13 @@ export default function Navbar() {
                 href={l.href}
                 onClick={close}
                 style={{
-                  color: 'rgba(255,255,255,0.9)',
+                  color: '#0A0E1A',
                   textDecoration: 'none',
                   fontSize: '28px',
                   fontWeight: 700,
                   fontFamily: 'Space Grotesk, sans-serif',
                   padding: '18px 0',
-                  borderBottom: '1px solid rgba(255,255,255,0.08)',
+                  borderBottom: '1px solid rgba(10,14,26,0.08)',
                   display: 'block',
                 }}
               >
@@ -204,7 +204,7 @@ export default function Navbar() {
             style={{
               marginTop: '32px',
               background: '#00C8FF',
-              color: '#0D1B2A',
+              color: '#0A0E1A',
               padding: '18px',
               borderRadius: '12px',
               textAlign: 'center',
