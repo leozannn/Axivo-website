@@ -154,11 +154,8 @@ export default function Equity() {
         {/* Distinction box */}
         <AnimatedSection delay={0.2}>
           <div
-            className="rounded-xl p-6 md:p-8"
-            style={{
-              border: '1px solid rgba(0,200,255,0.35)',
-              background: 'linear-gradient(135deg, rgba(0,200,255,0.1), rgba(0,200,255,0.04))',
-            }}
+            className="rounded-xl p-6"
+            style={{ background: 'rgba(0,200,255,0.06)', border: '1px solid rgba(0,200,255,0.25)' }}
           >
             <div
               style={{
@@ -167,15 +164,12 @@ export default function Equity() {
                 fontWeight: 600,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                marginBottom: '12px',
+                marginBottom: '8px',
               }}
             >
               {t(tr.distLabel, lang)}
             </div>
-            <p
-              className="text-base md:text-lg font-medium"
-              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff', lineHeight: 1.6 }}
-            >
+            <p style={{ color: '#E2E8F0', lineHeight: 1.7, fontSize: '1rem' }}>
               {t(tr.distText, lang)}
             </p>
           </div>
