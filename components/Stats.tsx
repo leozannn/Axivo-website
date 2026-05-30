@@ -95,7 +95,7 @@ export default function Stats() {
     <section
       ref={ref}
       style={{
-        backgroundColor: '#0F1628',
+        backgroundColor: '#112236',
         borderTop: '1px solid rgba(0,200,255,0.08)',
         borderBottom: '1px solid rgba(0,200,255,0.08)',
       }}

@@ -144,8 +144,8 @@ export default function Hero() {
       id="hero"
       className="pt-28 md:pt-0"
       style={{
-        backgroundColor: '#0A0E1A',
-        background: 'linear-gradient(135deg, #0A0E1A 0%, #0D1525 50%, #0A0E1A 100%)',
+        backgroundColor: '#0D1B2A',
+        background: 'linear-gradient(135deg, #0D1B2A 0%, #0D1525 50%, #0D1B2A 100%)',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',

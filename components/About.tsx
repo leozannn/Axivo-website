@@ -17,7 +17,7 @@ export default function About() {
     <section
       id="chi-siamo"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ backgroundColor: '#0A0E1A' }}
+      style={{ backgroundColor: '#0D1B2A' }}
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>

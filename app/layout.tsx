@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body style={{ backgroundColor: '#0A0E1A', color: '#ffffff' }}>
+      <body style={{ backgroundColor: '#0D1B2A', color: '#ffffff' }}>
         <LanguageProvider>
           <SmoothScroll>
             {children}

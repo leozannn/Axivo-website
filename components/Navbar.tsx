@@ -154,7 +154,7 @@ export default function Navbar() {
             position: 'fixed',
             inset: 0,
             zIndex: 100,
-            backgroundColor: '#0A0E1A',
+            backgroundColor: '#0D1B2A',
             display: 'flex',
             flexDirection: 'column',
             padding: '80px 32px 40px',
@@ -204,7 +204,7 @@ export default function Navbar() {
             style={{
               marginTop: '32px',
               background: '#00C8FF',
-              color: '#0A0E1A',
+              color: '#0D1B2A',
               padding: '18px',
               borderRadius: '12px',
               textAlign: 'center',

@@ -22,7 +22,7 @@ export default function Target() {
     <section
       id="target"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ backgroundColor: '#0F1628' }}
+      style={{ backgroundColor: '#112236' }}
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>

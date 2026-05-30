@@ -2,14 +2,20 @@
 @import "tailwindcss";
 
 :root {
-  --bg-dark: #0A0E1A;
+  --bg-dark: #0D1B2A;
   --bg-dark-secondary: #0D1220;
+  --bg-primary: #0D1B2A;
+  --bg-secondary: #112236;
   --accent: #00C8FF;
   --accent-glow: rgba(0, 200, 255, 0.3);
   --text-light: #FFFFFF;
   --text-muted: #94A3B8;
   --bg-light: #F8F9FA;
   --text-dark: #1A1A2E;
+}
+
+html, body {
+  background-color: #0D1B2A !important;
 }
 
 * {
@@ -26,12 +32,12 @@ html {
   touch-action: pan-y;
   height: auto !important;
   position: static !important;
-  background-color: #0A0E1A;
+  background-color: #0D1B2A;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0A0E1A;
+  background-color: #0D1B2A;
   color: #FFFFFF;
   margin: 0;
   padding: 0;
@@ -53,7 +59,7 @@ body {
     overflow-y: auto !important;
     height: auto !important;
     position: static !important;
-    background-color: #0A0E1A !important;
+    background-color: #0D1B2A !important;
     -webkit-overflow-scrolling: touch !important;
     touch-action: pan-y !important;
     overscroll-behavior: auto !important;
@@ -64,7 +70,7 @@ body {
     overflow-y: auto !important;
     height: auto !important;
     position: static !important;
-    background-color: #0A0E1A !important;
+    background-color: #0D1B2A !important;
     color: #ffffff !important;
     touch-action: pan-y !important;
     -webkit-overflow-scrolling: touch !important;
@@ -112,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0A0E1A; }
+::-webkit-scrollbar-track { background: #0D1B2A; }
 ::-webkit-scrollbar-thumb { background: #00C8FF; border-radius: 3px; }
 
 .glass-card {
@@ -133,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-glow {
   background: #00C8FF;
-  color: #0A0E1A;
+  color: #0D1B2A;
   font-weight: 600;
   transition: all 0.3s ease;
   cursor: pointer;
