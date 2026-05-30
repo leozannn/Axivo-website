@@ -8,8 +8,6 @@ import { useInView } from 'framer-motion'
 const statsData = [
   { value: 6, suffix: '+', label: { it: 'Aree di servizio', en: 'Service areas' } },
   { value: 4, suffix: '', label: { it: 'Tipologie di clienti', en: 'Client profiles' } },
-  { value: 5, suffix: '', label: { it: 'Fasi operative', en: 'Operating phases' } },
-  { value: 3, suffix: '', label: { it: 'Trigger di liquidità', en: 'Liquidity triggers' } },
 ]
 
 function useCountUp(end: number, duration: number, started: boolean): number {
@@ -55,7 +53,7 @@ function StatItem({
           color: '#00C8FF',
           fontFamily: 'Space Grotesk, sans-serif',
           fontWeight: 700,
-          fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
+          fontSize: 'clamp(3rem, 7vw, 5rem)',
         }}
       >
         {count}<span>{suffix}</span>
@@ -103,8 +101,8 @@ export default function Stats() {
       }}
       className="py-20 px-6"
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
+      <div className="max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 gap-10 md:gap-20 justify-items-center">
           {statsData.map((stat, i) => (
             <StatItem
               key={i}

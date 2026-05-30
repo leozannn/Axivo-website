@@ -44,10 +44,6 @@ export default function Contact() {
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>
-          <span className="ordinal">{t(tr.tag, lang)}</span>
-        </AnimatedSection>
-
-        <AnimatedSection delay={0.15}>
           <h2
             className="text-3xl md:text-5xl font-bold mb-4 mt-3"
             style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}

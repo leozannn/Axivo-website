@@ -14,7 +14,6 @@ export default function Services() {
     { num: '04', title: t(tr.s4title, lang), text: t(tr.s4text, lang) },
     { num: '05', title: t(tr.s5title, lang), text: t(tr.s5text, lang) },
     { num: '06', title: t(tr.s6title, lang), text: t(tr.s6text, lang) },
-    { num: '07', title: t(tr.s7title, lang), text: t(tr.s7text, lang) },
   ]
 
   const cardStyle = {
@@ -86,7 +85,7 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 lg:max-w-[75%] lg:mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-10 lg:max-w-[50%] lg:mx-auto">
           {cards.slice(4).map((card, i) => (
             <AnimatedSection key={card.num} delay={(i + 4) * 0.08}>
               <div style={cardStyle}>
@@ -137,6 +136,18 @@ export default function Services() {
             </div>
             <p style={{ color: '#E2E8F0', lineHeight: 1.7, fontSize: '1rem' }}>
               {t(tr.outputText, lang)}
+            </p>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.6)',
+                lineHeight: 1.7,
+                fontSize: '0.875rem',
+                marginTop: '16px',
+                paddingLeft: '12px',
+                borderLeft: '2px solid rgba(0,200,255,0.5)',
+              }}
+            >
+              {t(tr.outputNote, lang)}
             </p>
           </div>
         </AnimatedSection>

@@ -154,7 +154,7 @@ export default function Equity() {
         {/* Distinction box */}
         <AnimatedSection delay={0.2}>
           <div
-            className="rounded-xl p-6 md:p-8 text-center"
+            className="rounded-xl p-6 md:p-8"
             style={{
               border: '1px solid rgba(0,200,255,0.35)',
               background: 'linear-gradient(135deg, rgba(0,200,255,0.1), rgba(0,200,255,0.04))',

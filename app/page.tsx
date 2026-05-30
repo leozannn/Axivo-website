@@ -7,7 +7,6 @@ import About from '@/components/About'
 import Target from '@/components/Target'
 import Services from '@/components/Services'
 import Equity from '@/components/Equity'
-import EquitySteps from '@/components/EquitySteps'
 import Contact from '@/components/Contact'
 
 export default function Home() {
@@ -29,7 +28,6 @@ export default function Home() {
       <Target />
       <Services />
       <Equity />
-      <EquitySteps />
       <Contact />
     </main>
   )
