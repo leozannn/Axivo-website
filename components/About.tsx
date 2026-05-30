@@ -90,7 +90,7 @@ export default function About() {
                     fontSize: '2.5rem',
                     fontWeight: 700,
                     marginBottom: '16px',
-                    color: 'rgba(0,200,255,0.15)',
+                    color: '#00A8E8',
                     fontFamily: 'Space Grotesk, sans-serif',
                   }}
                 >

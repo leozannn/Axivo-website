@@ -60,13 +60,12 @@ export default function Services() {
               <div style={cardStyle}>
                 <span
                   style={{
-                    color: '#00C8FF',
-                    fontFamily: 'monospace',
+                    color: '#00A8E8',
+                    fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: 700,
-                    fontSize: '0.875rem',
+                    fontSize: '1.25rem',
                     display: 'block',
                     marginBottom: '16px',
-                    opacity: 0.7,
                   }}
                 >
                   {card.num}
@@ -91,13 +90,12 @@ export default function Services() {
               <div style={cardStyle}>
                 <span
                   style={{
-                    color: '#00C8FF',
-                    fontFamily: 'monospace',
+                    color: '#00A8E8',
+                    fontFamily: 'Space Grotesk, sans-serif',
                     fontWeight: 700,
-                    fontSize: '0.875rem',
+                    fontSize: '1.25rem',
                     display: 'block',
                     marginBottom: '16px',
-                    opacity: 0.7,
                   }}
                 >
                   {card.num}
