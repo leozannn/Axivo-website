@@ -144,7 +144,8 @@ export default function Hero() {
       id="hero"
       className="pt-28 md:pt-0"
       style={{
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#0D1B2A',
+        background: 'linear-gradient(135deg, #0D1B2A 0%, #0D1525 50%, #0D1B2A 100%)',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -201,7 +202,7 @@ export default function Hero() {
             fontWeight: 700,
             lineHeight: 1.15,
             marginBottom: '24px',
-            color: '#0A0E1A',
+            color: '#ffffff',
             maxWidth: '860px',
           }}
           className="text-4xl md:text-7xl"
@@ -255,7 +256,7 @@ export default function Hero() {
         {/* Subline */}
         <p
           className="text-lg md:text-xl mb-10 max-w-xl"
-          style={{ color: 'rgba(10,14,26,0.7)', lineHeight: 1.7 }}
+          style={{ color: '#94A3B8', lineHeight: 1.7 }}
         >
           {t(translations.hero.subline, lang)}
         </p>
@@ -271,10 +272,10 @@ export default function Hero() {
           <a
             href="#contatti"
             className="px-7 py-3 rounded-lg text-base font-semibold transition-all text-center sm:text-left"
-            style={{ border: '1px solid #0A0E1A', color: '#0A0E1A', textDecoration: 'none' }}
+            style={{ border: '1px solid rgba(0,200,255,0.4)', color: '#00C8FF', textDecoration: 'none' }}
             onMouseEnter={e => {
-              e.currentTarget.style.background = 'rgba(10,14,26,0.05)'
-              e.currentTarget.style.boxShadow = '0 0 10px rgba(10,14,26,0.1)'
+              e.currentTarget.style.background = 'rgba(0,200,255,0.08)'
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(0,200,255,0.2)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = 'transparent'
@@ -293,7 +294,7 @@ export default function Hero() {
       >
         <span
           className="text-xs tracking-widest uppercase"
-          style={{ color: 'rgba(10,14,26,0.4)' }}
+          style={{ color: 'rgba(255,255,255,0.4)' }}
         >Scroll</span>
         <div
           className="w-px h-12"

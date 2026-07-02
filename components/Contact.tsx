@@ -29,9 +29,9 @@ export default function Contact() {
     padding: '12px 16px',
     fontSize: '0.875rem',
     outline: 'none',
-    background: 'rgba(10,14,26,0.04)',
-    border: '1px solid rgba(10,14,26,0.12)',
-    color: '#0A0E1A',
+    background: 'rgba(255,255,255,0.04)',
+    border: '1px solid rgba(255,255,255,0.1)',
+    color: '#ffffff',
     minHeight: '48px',
     boxSizing: 'border-box' as const,
   }
@@ -40,13 +40,13 @@ export default function Contact() {
     <section
       id="contatti"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ backgroundColor: '#FFFFFF' }}
+      style={{ backgroundColor: '#0D1B2A' }}
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>
           <h2
             className="text-3xl md:text-5xl font-bold mb-4 mt-3"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
           >
             {t(tr.title, lang)}
           </h2>
@@ -57,7 +57,7 @@ export default function Contact() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.25}>
-          <p className="text-base mb-12 max-w-xl" style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.7 }}>
+          <p className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
             {t(tr.subtitle, lang)}
           </p>
         </AnimatedSection>
@@ -86,7 +86,7 @@ export default function Contact() {
                     onChange={e => setForm(p => ({ ...p, [field]: e.target.value }))}
                     style={inputStyle}
                     onFocus={e => (e.target.style.borderColor = '#00C8FF')}
-                    onBlur={e => (e.target.style.borderColor = 'rgba(10,14,26,0.12)')}
+                    onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
                   />
                 ))}
                 <textarea
@@ -101,7 +101,7 @@ export default function Contact() {
                     minHeight: 'unset',
                   }}
                   onFocus={e => (e.target.style.borderColor = '#00C8FF')}
-                  onBlur={e => (e.target.style.borderColor = 'rgba(10,14,26,0.12)')}
+                  onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
                 />
                 <button
                   type="submit"
@@ -120,10 +120,10 @@ export default function Contact() {
               <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                 <MapPin size={18} style={{ color: '#00C8FF', marginTop: 2, flexShrink: 0 }} />
                 <div>
-                  <p style={{ color: 'rgba(10,14,26,0.65)', fontSize: '0.875rem' }}>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem' }}>
                     {t(ftr.address, lang)}
                   </p>
-                  <p style={{ color: 'rgba(10,14,26,0.65)', fontSize: '0.875rem', marginTop: '4px', fontWeight: 500 }}>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', marginTop: '4px', fontWeight: 500 }}>
                     {t(ftr.vat, lang)}
                   </p>
                 </div>
@@ -134,9 +134,9 @@ export default function Contact() {
                   href={`https://${t(ftr.website, lang)}`}
                   target="_blank"
                   rel="noopener"
-                  style={{ color: 'rgba(10,14,26,0.65)', fontSize: '0.875rem', textDecoration: 'none' }}
+                  style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', textDecoration: 'none' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#00C8FF')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(10,14,26,0.65)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
                 >
                   {t(ftr.website, lang)}
                 </a>
@@ -145,9 +145,9 @@ export default function Contact() {
                 <Mail size={18} style={{ color: '#00C8FF', flexShrink: 0 }} />
                 <a
                   href={`mailto:${t(ftr.emailAddr, lang)}`}
-                  style={{ color: 'rgba(10,14,26,0.65)', fontSize: '0.875rem', textDecoration: 'none' }}
+                  style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', textDecoration: 'none' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#00C8FF')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(10,14,26,0.65)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
                 >
                   {t(ftr.emailAddr, lang)}
                 </a>
@@ -162,7 +162,7 @@ export default function Contact() {
                       width: '40px',
                       height: '40px',
                       borderRadius: '8px',
-                      border: '1px solid rgba(10,14,26,0.12)',
+                      border: '1px solid rgba(255,255,255,0.1)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -173,7 +173,7 @@ export default function Contact() {
                       e.currentTarget.style.background = 'rgba(0,200,255,0.08)'
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.borderColor = 'rgba(10,14,26,0.12)'
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
                       e.currentTarget.style.background = 'transparent'
                     }}
                   >

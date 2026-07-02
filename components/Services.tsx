@@ -17,8 +17,8 @@ export default function Services() {
   ]
 
   const cardStyle = {
-    background: 'rgba(10,14,26,0.04)',
-    border: '1px solid rgba(10,14,26,0.12)',
+    background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(0,200,255,0.15)',
     borderRadius: '12px',
     padding: '24px',
   }
@@ -27,7 +27,7 @@ export default function Services() {
     <section
       id="servizi"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ backgroundColor: '#FFFFFF' }}
+      style={{ backgroundColor: '#0D1B2A' }}
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>
@@ -37,7 +37,7 @@ export default function Services() {
         <AnimatedSection delay={0.15}>
           <h2
             className="text-3xl md:text-5xl font-bold mb-4 mt-3"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
           >
             {t(tr.title, lang)}
           </h2>
@@ -48,7 +48,7 @@ export default function Services() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.25}>
-          <p className="text-base mb-12 max-w-xl" style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.7 }}>
+          <p className="text-base mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
             {t(tr.subtitle, lang)}
           </p>
         </AnimatedSection>
@@ -72,11 +72,11 @@ export default function Services() {
                 </span>
                 <h3
                   className="font-semibold text-base mb-3"
-                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
                 >
                   {card.title}
                 </h3>
-                <p style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
                   {card.text}
                 </p>
               </div>
@@ -102,11 +102,11 @@ export default function Services() {
                 </span>
                 <h3
                   className="font-semibold text-base mb-3"
-                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
                 >
                   {card.title}
                 </h3>
-                <p style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
                   {card.text}
                 </p>
               </div>
@@ -132,12 +132,12 @@ export default function Services() {
             >
               {t(tr.outputLabel, lang)}
             </div>
-            <p style={{ color: '#0A0E1A', lineHeight: 1.7, fontSize: '1rem' }}>
+            <p style={{ color: '#E2E8F0', lineHeight: 1.7, fontSize: '1rem' }}>
               {t(tr.outputText, lang)}
             </p>
             <p
               style={{
-                color: 'rgba(10,14,26,0.65)',
+                color: 'rgba(255,255,255,0.6)',
                 lineHeight: 1.7,
                 fontSize: '0.875rem',
                 marginTop: '16px',

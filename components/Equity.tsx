@@ -17,7 +17,7 @@ export default function Equity() {
     <section
       id="equity"
       className="py-16 px-4 md:py-24 md:px-6"
-      style={{ backgroundColor: '#F5F7FA' }}
+      style={{ backgroundColor: '#112236' }}
     >
       <div className="max-w-7xl mx-auto">
         <AnimatedSection delay={0.1}>
@@ -27,7 +27,7 @@ export default function Equity() {
         <AnimatedSection delay={0.15}>
           <h2
             className="text-3xl md:text-5xl font-bold mb-4 mt-3"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0A0E1A' }}
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#ffffff' }}
           >
             {t(tr.title, lang)}
           </h2>
@@ -38,7 +38,7 @@ export default function Equity() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.25}>
-          <p className="text-base mb-10 md:mb-12 max-w-xl" style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.7 }}>
+          <p className="text-base mb-10 md:mb-12 max-w-xl" style={{ color: '#94A3B8', lineHeight: 1.7 }}>
             {t(tr.subtitle, lang)}
           </p>
         </AnimatedSection>
@@ -50,8 +50,8 @@ export default function Equity() {
                 <div
                   className="rounded-xl p-5"
                   style={{
-                    background: 'rgba(10,14,26,0.04)',
-                    border: '1px solid rgba(10,14,26,0.12)',
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(0,200,255,0.15)',
                     height: '100%',
                   }}
                 >
@@ -67,7 +67,7 @@ export default function Equity() {
                   >
                     {t(tr.cashTitle, lang)}
                   </div>
-                  <p style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                  <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
                     {t(tr.cashText, lang)}
                   </p>
                 </div>
@@ -92,8 +92,8 @@ export default function Equity() {
                 <div
                   className="rounded-xl p-5"
                   style={{
-                    background: 'rgba(10,14,26,0.04)',
-                    border: '1px solid rgba(10,14,26,0.12)',
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(0,200,255,0.15)',
                     height: '100%',
                   }}
                 >
@@ -109,7 +109,7 @@ export default function Equity() {
                   >
                     {t(tr.equityTitle, lang)}
                   </div>
-                  <p style={{ color: 'rgba(10,14,26,0.65)', lineHeight: 1.6, fontSize: '0.875rem' }}>
+                  <p style={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.875rem' }}>
                     {t(tr.equityText, lang)}
                   </p>
                 </div>
@@ -138,12 +138,12 @@ export default function Equity() {
                           fontWeight: 600,
                           fontSize: '0.875rem',
                           marginBottom: '4px',
-                          color: '#0A0E1A',
+                          color: '#ffffff',
                         }}
                       >
                         {b.title}
                       </div>
-                      <p style={{ color: 'rgba(10,14,26,0.65)', fontSize: '0.875rem' }}>{b.sub}</p>
+                      <p style={{ color: '#94A3B8', fontSize: '0.875rem' }}>{b.sub}</p>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -169,7 +169,7 @@ export default function Equity() {
             >
               {t(tr.distLabel, lang)}
             </div>
-            <p style={{ color: '#0A0E1A', lineHeight: 1.7, fontSize: '1rem' }}>
+            <p style={{ color: '#E2E8F0', lineHeight: 1.7, fontSize: '1rem' }}>
               {t(tr.distText, lang)}
             </p>
           </div>
