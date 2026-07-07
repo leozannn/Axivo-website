@@ -37,6 +37,7 @@ export default function Contact() {
   }
 
   return (
+    <>
     <section
       id="contatti"
       className="py-16 px-4 md:py-24 md:px-6"
@@ -202,5 +203,41 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    <div style={{
+      backgroundColor: '#0A0E1A',
+      borderTop: '1px solid rgba(255,255,255,0.1)',
+      padding: '16px 24px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '32px',
+      flexWrap: 'wrap',
+      textAlign: 'center'
+    }}>
+      <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>
+        © 2026 AXIVO Partners S.r.l. — P.IVA 05566100268
+      </span>
+      <a
+        href="https://www.iubenda.com/privacy-policy/74011516"
+        className="iubenda-white iubenda-noiframe iubenda-embed"
+        title="Privacy Policy"
+        style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', textDecoration: 'none' }}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Privacy Policy
+      </a>
+      <a
+        href="https://www.iubenda.com/privacy-policy/74011516/cookie-policy"
+        className="iubenda-white iubenda-noiframe iubenda-embed"
+        title="Cookie Policy"
+        style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', textDecoration: 'none' }}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Cookie Policy
+      </a>
+    </div>
+    </>
   )
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import { LanguageProvider } from '@/lib/LanguageContext'
 import SmoothScroll from '@/components/SmoothScroll'
@@ -40,6 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        <Script
+          src="https://embeds.iubenda.com/widgets/744d6fca-0565-4b06-a566-a62dba029964.js"
+          type="text/javascript"
+          strategy="afterInteractive"
+        />
       </head>
       <body style={{ backgroundColor: '#0D1B2A', color: '#ffffff' }}>
         <LanguageProvider>
@@ -47,6 +53,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </SmoothScroll>
         </LanguageProvider>
+        <Script
+          id="iubenda-loader"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`
+          }}
+        />
       </body>
     </html>
   )
