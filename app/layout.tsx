@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
         <Script
-          src="https://embeds.iubenda.com/widgets/041d2b99-8700-42d2-b0bc-3fc8ac6c2136.js"
+          src="https://embeds.iubenda.com/widgets/744d6fca-0565-4b06-a566-a62dba029964.js"
           type="text/javascript"
           strategy="afterInteractive"
         />

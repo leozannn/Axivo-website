@@ -218,7 +218,7 @@ export default function Contact() {
         © 2026 AXIVO Partners S.r.l. — P.IVA 05566100268
       </span>
       <a
-        href="https://www.iubenda.com/privacy-policy/85054905"
+        href="https://www.iubenda.com/privacy-policy/74011516"
         className="iubenda-white iubenda-noiframe iubenda-embed"
         title="Privacy Policy"
         style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', textDecoration: 'none' }}
@@ -228,7 +228,7 @@ export default function Contact() {
         Privacy Policy
       </a>
       <a
-        href="https://www.iubenda.com/privacy-policy/85054905/cookie-policy"
+        href="https://www.iubenda.com/privacy-policy/74011516/cookie-policy"
         className="iubenda-white iubenda-noiframe iubenda-embed"
         title="Cookie Policy"
         style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', textDecoration: 'none' }}
