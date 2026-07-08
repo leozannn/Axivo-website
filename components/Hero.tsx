@@ -142,7 +142,6 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="pt-28 md:pt-0"
       style={{
         backgroundColor: '#0D1B2A',
         background: 'linear-gradient(135deg, #0D1B2A 0%, #0D1525 50%, #0D1B2A 100%)',
@@ -191,21 +190,20 @@ export default function Hero() {
           maxWidth: '1280px',
           margin: '0 auto',
           width: '100%',
-          padding: '0 24px 48px',
         }}
-        className="md:px-6 md:pt-32 md:pb-8"
+        className="px-6 pt-[150px] pb-12 md:pt-[220px] md:pb-8"
       >
         {/* Headline */}
         <h1
           style={{
             fontFamily: 'Space Grotesk, sans-serif',
-            fontWeight: 700,
-            lineHeight: 1.15,
+            fontSize: 'clamp(2rem, 6vw, 5rem)',
+            fontWeight: 800,
+            lineHeight: 1.1,
             marginBottom: '24px',
             color: '#ffffff',
             maxWidth: '860px',
           }}
-          className="text-4xl md:text-7xl"
         >
           {isMobile ? (
             /* Mobile: plain text, no animation */
