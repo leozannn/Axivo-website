@@ -107,7 +107,7 @@ export const translations = {
     address: { it: 'Via Antonio Correr 7, 31029 Vittorio Veneto (TV)', en: 'Via Antonio Correr 7, 31029 Vittorio Veneto (TV), Italy' },
     vat: { it: 'P.IVA: 05566100268', en: 'VAT: 05566100268' },
     website: { it: 'www.axivopartners.com', en: 'www.axivopartners.com' },
-    emailAddr: { it: 'info@axivopartners.com', en: 'info@axivopartners.com' },
+    emailAddr: { it: 'leonardo@axivopartners.it', en: 'leonardo@axivopartners.it' },
     disclaimer: { it: "Il presente materiale ha finalità commerciale e descrittiva; non costituisce offerta vincolante né consulenza legale o fiscale. L'eventuale attivazione del work for equity resta subordinata a verifiche di conformità statutaria e normativa.", en: 'This material is for commercial and descriptive purposes only; it does not constitute a binding offer or legal or tax advice. Any activation of the work for equity component is subject to statutory and regulatory compliance checks.' },
     copyright: { it: '© 2026 AXIVO Partners S.r.l. Tutti i diritti riservati.', en: '© 2026 AXIVO Partners S.r.l. All rights reserved.' },
   },
