@@ -10,11 +10,34 @@ export default function Contact() {
   const tr = translations.contact
   const ftr = translations.footer
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykrgqbq'
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSubmitting(true)
+    setError(false)
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(e.currentTarget as HTMLFormElement),
+      })
+      if (response.ok) {
+        setSubmitted(true)
+        setForm({ name: '', email: '', company: '', message: '' })
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const fields = [
@@ -76,10 +99,17 @@ export default function Contact() {
                 <p style={{ color: '#00C8FF', fontWeight: 500 }}>{t(tr.sent, lang)}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <form
+                action={FORMSPREE_ENDPOINT}
+                method="POST"
+                onSubmit={handleSubmit}
+                style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+              >
+                <input type="hidden" name="_subject" value="Nuovo messaggio dal sito AXIVO Partners" />
                 {fields.map(({ field, label, inputType }) => (
                   <input
                     key={field}
+                    name={field}
                     type={inputType}
                     required
                     placeholder={label}
@@ -91,6 +121,7 @@ export default function Contact() {
                   />
                 ))}
                 <textarea
+                  name="message"
                   required
                   rows={5}
                   placeholder={t(tr.message, lang)}
@@ -104,12 +135,22 @@ export default function Contact() {
                   onFocus={e => (e.target.style.borderColor = '#00C8FF')}
                   onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
                 />
+                {error && (
+                  <p style={{ color: '#FF6B6B', fontSize: '0.875rem' }}>
+                    {lang === 'it'
+                      ? "Si è verificato un errore nell'invio. Riprova o scrivici direttamente via email."
+                      : 'Something went wrong sending your message. Please try again or email us directly.'}
+                  </p>
+                )}
                 <button
                   type="submit"
+                  disabled={submitting}
                   className="btn-glow shimmer-btn py-3 rounded-lg text-sm font-semibold w-full"
-                  style={{ marginTop: '8px' }}
+                  style={{ marginTop: '8px', opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
                 >
-                  {t(tr.send, lang)}
+                  {submitting
+                    ? (lang === 'it' ? 'Invio in corso...' : 'Sending...')
+                    : t(tr.send, lang)}
                 </button>
               </form>
             )}
