@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { LanguageProvider } from '@/lib/LanguageContext'
 import SmoothScroll from '@/components/SmoothScroll'
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </SmoothScroll>
         </LanguageProvider>
+        <Analytics />
         <Script
           id="iubenda-loader"
           strategy="afterInteractive"
